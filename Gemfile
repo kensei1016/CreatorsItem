@@ -39,6 +39,10 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # デバック
+  gem 'pry-byebug'
+  # ダミーデータ生成
+  gem 'faker'
 end
 
 group :development do
@@ -48,6 +52,14 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # railsコンソールのテーブル表示を見やすくする
+  gem 'hirb'
+  # gem 'hirb-unicode'
+  # 静的コード解析
+  gem 'rubocop', require: false
+  gem 'rubocop-rails'
+  # N+1問題
+  gem 'bullet'
 end
 
 group :test do
@@ -56,7 +68,34 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  # システムテスト
+  gem 'rspec-rails'
+  gem "factory_bot_rails"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# 認証
+gem 'devise'
+# 画像アップロード・表示
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
+# レイアウト
+gem 'bootstrap'
+gem 'jquery-rails'
+# ページネーション
+gem 'kaminari'
+# アイコン
+gem 'font-awesome-sass', '~> 5.4.1'
+# 環境変数管理
+gem 'dotenv-rails'
+# 検索・ソート
+gem 'ransack'
+# タグ付け
+gem 'acts-as-taggable-on'
+# トラッキング
+gem 'impressionist'
+# SNS認証(Twitter)
+gem 'omniauth'
+gem 'omniauth-twitter'
