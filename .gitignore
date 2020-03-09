@@ -30,4 +30,8 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# VSCodeの設定ファイル
 /.vscode
+
+# irbの起動時読み込みファイル
+/.irbrc
