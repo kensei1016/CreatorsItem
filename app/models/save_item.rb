@@ -1,0 +1,2 @@
+class SaveItem < ApplicationRecord
+end

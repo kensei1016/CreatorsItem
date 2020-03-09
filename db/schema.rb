@@ -10,7 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_08_233350) do
+ActiveRecord::Schema.define(version: 2020_03_09_012047) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "comment", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "creator_genres", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "name_en", null: false
+    t.string "genre_icon_image_id"
+    t.string "genre_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "creator_items", force: :cascade do |t|
+    t.integer "work_room_id"
+    t.string "external_site_name", null: false
+    t.string "item_url", null: false
+    t.string "item_code", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["work_room_id"], name: "index_creator_items_on_work_room_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
 
   create_table "impressions", force: :cascade do |t|
     t.string "impressionable_type"
@@ -36,6 +70,24 @@ ActiveRecord::Schema.define(version: 2020_03_08_233350) do
     t.index ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index"
     t.index ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
     t.index ["user_id"], name: "index_impressions_on_user_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "follow_user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follow_user_id"], name: "index_relationships_on_follow_user_id"
+    t.index ["user_id"], name: "index_relationships_on_user_id"
+  end
+
+  create_table "save_items", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "creator_item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_item_id"], name: "index_save_items_on_creator_item_id"
+    t.index ["user_id"], name: "index_save_items_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -77,6 +129,24 @@ ActiveRecord::Schema.define(version: 2020_03_08_233350) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "work_room_images", force: :cascade do |t|
+    t.integer "work_room_id_id"
+    t.string "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["work_room_id_id"], name: "index_work_room_images_on_work_room_id_id"
+  end
+
+  create_table "work_rooms", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "creator_genre_id"
+    t.text "caption"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["creator_genre_id"], name: "index_work_rooms_on_creator_genre_id"
+    t.index ["user_id"], name: "index_work_rooms_on_user_id"
   end
 
 end

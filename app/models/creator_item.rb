@@ -1,0 +1,2 @@
+class CreatorItem < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class WorkRoomImage < ApplicationRecord
+end
