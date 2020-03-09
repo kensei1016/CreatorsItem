@@ -1,2 +1,7 @@
 class WorkRoom < ApplicationRecord
+  belongs_to :user
+  belongs_to :creator_genre
+  has_many :save_items,         dependent: :destroy
+  has_many :creator_items,      dependent: :destroy
+  has_many :work_room_images,   dependent: :destroy
 end

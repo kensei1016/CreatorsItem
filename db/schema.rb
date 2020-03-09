@@ -90,11 +90,11 @@ ActiveRecord::Schema.define(version: 2020_03_09_014214) do
 
   create_table "save_items", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "creator_item_id"
+    t.integer "work_room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["creator_item_id"], name: "index_save_items_on_creator_item_id"
     t.index ["user_id"], name: "index_save_items_on_user_id"
+    t.index ["work_room_id"], name: "index_save_items_on_work_room_id"
   end
 
   create_table "taggings", force: :cascade do |t|
