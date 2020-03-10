@@ -16,7 +16,7 @@ def create_caption(number)
 end
 # -------------------------------------------
 
-# user
+# users
 profiles = [
   { email: "kensei@example.com",  name: "kensei359",                caption: create_caption(150) },
   { email: "tonakai@example.com", name: "yukigeshiki_hokkaido_123", caption: create_caption(90) },
@@ -31,5 +31,20 @@ profiles.each do |profile|
     user.password = "password"
   end
 end
-# user/
+# users/
 
+# creator_genres
+creator_genre_datas = [
+  { name: "音楽",  name_en: "music"},
+  { name: "絵",  name_en: "illustrator"},
+  { name: "料理",  name_en: "cooking"},
+  { name: "プログラマー",  name_en: "programer"},
+  { name: "写真",  name_en: "photogreper"}
+]
+creator_genre_datas.each do |creator_genre_data|
+  CreatorGenre.find_or_create_by!(name: creator_genre_data[:name]) do |creator_genre|
+    creator_genre.name = creator_genre_data[:name]
+    creator_genre.name_en = creator_genre_data[:name_en]
+  end
+end
+# creator_genres/
