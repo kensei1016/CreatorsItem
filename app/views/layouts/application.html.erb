@@ -51,11 +51,24 @@
         </ul>
       </nav>
 
-      
-
     </header>
     <!-- header/ -->
 
     <%= yield %>
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__contents-group row align-items-center">
+          <div class="footer__content-left col-4 mr-auto">
+            <%= link_to 'CreatorsRoomについて', homes_about_path, class: "footer__about-link" %>
+          </div>
+          <div class="footer__content-right col-auto">
+            <p class="mb-0">© 2020 CreatorsRoom Inc.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- footer/ -->
   </body>
 </html>
