@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   get 'mypage', to: 'users#show', as: :mypage
-  resources :users do
+  resources :users, only: :show do
     resource :relationship, only: [:create, :destroy]
     member do
       get 'follows'
