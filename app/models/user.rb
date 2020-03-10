@@ -21,4 +21,8 @@ class User < ApplicationRecord
   has_many :following_user,   through: :follower,
                               source: :followed # 自分がフォローしている人
   has_many :save_item,  dependent: :destroy
+
+  validates :name,
+    presence: true,
+    length: { minimum: 1, maximum:30 }
 end
