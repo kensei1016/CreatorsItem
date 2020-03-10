@@ -1,0 +1,15 @@
+.footer {
+  border-top: 1px solid gray;
+
+  &__contents-group {
+    height: 70px;
+  }
+
+  &__about-link {
+    font-size: 20px;
+    color: black;
+    &:hover {
+      color: black;
+    }
+  }
+}

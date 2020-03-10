@@ -8,8 +8,67 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+                    
   <body>
+    <!-- header -->
+    <header class="header navbar navbar-expand-sm navbar-light bg-light">
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag "module/header_logo.svg", height: '20' %>
+      <% end %>
+
+      <!-- TODO: 検索フォームは後で実装する -->
+      <form class="form-inline my-2 my-lg-0">
+        <input type="search" class="form-control mr-sm-2" placeholder="気になるアイテム、タグで検索" aria-label="検索...">
+        <button type="submit" class="btn btn-outline-success my-2 my-sm-0">検索</button>
+      </form>
+
+      <nav class="collapse navbar-collapse">
+        <ul class="nav navbar-nav ml-auto">
+          <% if user_signed_in? %> 
+            <div class="header__user-profile-group">
+              <!-- TODO: ユーザ情報編集作成後、ユーザのアイコンを表示するようにする-->
+              <%= image_tag "module/user_icons/user_no_image_icon.png", height: '40', class: "header__user-icon" %>
+
+              <ul class="header__account-menu">
+                <li class="header__account-menu-item"><%= link_to 'マイページ', mypage_path %></li>
+                <li class="header__account-menu-item"><%= link_to '編集', edit_user_registration_path %></li>
+                <li class="header__account-menu-item"><%= link_to '投稿する', new_work_room_path %></li>
+                <li class="header__account-menu-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </div>
+          <% else %>
+            <li>
+              <%= link_to new_user_registration_path, class: "header__sign-up-link nav-link" do %>
+                <span>新規登録</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_user_session_path, class: "nav-link" do %>
+                <span>ログイン</span>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+
+    </header>
+    <!-- header/ -->
+
     <%= yield %>
+
+    <!-- footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__contents-group row align-items-center">
+          <div class="footer__content-left col-4 mr-auto">
+            <%= link_to 'CreatorsRoomについて', homes_about_path, class: "footer__about-link" %>
+          </div>
+          <div class="footer__content-right col-auto">
+            <p class="mb-0">© 2020 CreatorsRoom Inc.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- footer/ -->
   </body>
 </html>

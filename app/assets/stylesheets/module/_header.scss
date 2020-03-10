@@ -1,0 +1,51 @@
+.header {
+  &__sign-up-link {
+    position: relative;
+
+    &::after {
+      content: '';
+      width: 1px;
+      height: 21px;
+      right: 0px;
+      position: absolute;
+      background-color: rgba(68, 68, 68, 0.5);
+    }
+  }
+
+  &__user-profile-group {
+    position: relative;
+  }
+
+  &__account-menu {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+    border: 1px solid;
+    position: absolute;
+    width: 140px;
+    right: 0;
+    top: 50px;
+    display: none;
+  }
+
+  &__account-menu-item {
+    background-color: white;
+    padding: 0 10px;
+    border-bottom: 1px solid black;
+    &:nth-last-child(1) {
+      border-bottom: 0;
+    }
+    height: 2em;
+    display: flex;
+
+    a {
+      color: black;
+      width: 100%;
+      // 親要素の高さに行高を合わせて縦中央に配置
+      line-height: 2em;
+      &:hover {
+        color: black;
+      }
+    }
+  }
+}

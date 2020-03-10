@@ -13,4 +13,21 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require jquery
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+  $(function() {
+    $('.header__user-icon').click(function() {
+      $('.header__account-menu').toggle();
+    })
+  });
+});
+
+//アカウントメニューが開いているとき他の場所をクリックすると、
+//メニューを閉じる
+$(document).on('click', function(event) {
+  if(!$(event.target).closest('.header__user-profile-group').length) {
+    $('.header__account-menu').hide();
+  }
+});
