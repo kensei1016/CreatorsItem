@@ -1,29 +1,55 @@
-<h2>Sign up</h2>
+<div class="sign-up container-fluid">
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="sign-up__contents col-5 p-5 shadow">
+      <div class="sign-up__header mb-5">
+        <h2><%= image_tag "module/header_logo.svg", height: '30' %></h2>
+        <p>クリエイターのアイテムをノゾいちゃおう</p>
+      </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <h3 class="text-center mb-3">サインアップ</h3>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <div class="form-group">
+          <%= f.label "名前", class: "control-label sr-only" %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "名前", class:"form-control" %>
+          <%= render partial: "module/error_message", locals: {resource: resource, attr: :name} %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :email, class: "control-label sr-only" %>
+          <%= f.email_field :email, placeholder: "メールアドレス", autocomplete: "email", class:"form-control" %>
+          <%= render partial: "module/error_message", locals: {resource: resource, attr: :email} %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "パスワード", class: "control-label sr-only" %>
+          <%= f.password_field :password, autocomplete: "new-password", class:"form-control", placeholder: "パスワード（6文字以上）" %>
+          <%= render partial: "module/error_message", locals: {resource: resource, attr: :password} %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label "パスワード（確認）", class: "control-label sr-only" %>
+          <%= f.password_field :password_confirmation, class:"form-control", autocomplete: "new-password", placeholder:  "パスワードの確認" %>
+          <%= render partial: "module/error_message", locals: {resource: resource, attr: :password_confirmation} %>
+        </div>
+
+        <div class="form-group">
+          <p class="mb-0">あなたは何のクリエイターですか？（複数選択可）</p>
+          <%= f.collection_check_boxes(:creator_genres, CreatorGenre.all, :id, :name) do |b| %>
+            <%= b.label { b.check_box + b.text } %>
+          <% end %>
+          <br/>
+          <%= check_box_tag :creator_other_genre_check %>
+          <%= label_tag :creator_other_genre_check , "その他" %>
+          <%= text_field_tag :creator_other_genre , "", placeholder: "ここに入力" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit "サインアップ", class:"btn btn-success form-control" %>
+        </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

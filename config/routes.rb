@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'homes/about'
 
-  devise_for :users
+  devise_for :users, :controllers => {
+    :registrations => 'users/registrations'
+  }
   get 'mypage', to: 'users#show', as: :mypage
   resources :users, only: :show do
     resource :relationship, only: [:create, :destroy]
