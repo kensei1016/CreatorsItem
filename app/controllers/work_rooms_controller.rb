@@ -1,5 +1,10 @@
 class WorkRoomsController < ApplicationController
   def new
+    @work_room = WorkRoom.new
+  end
+
+  def create
+    binding.pry
   end
 
   def show

@@ -1,0 +1,57 @@
+.work_room_post {
+  background-color: #ECECEC;
+  padding: 30px;
+
+  @mixin post_box {
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  &__image_post {
+    @include post_box;
+  }
+
+  &__item_post {
+    @include post_box;
+  }
+
+  &__creator_genre_post {
+    @include post_box;
+  }
+
+  &__tag_post {
+    @include post_box;
+  }
+
+  &__contributor_comment_post {
+    @include post_box;
+  }
+
+  &__img-thumbnail-block {
+    position: relative;
+    height: 200px;
+  }
+
+  &__img-remove-btn {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: -5px;
+    right: -5px;
+  }
+
+  &__img-thumbnail{
+    height: 100%;
+  }
+
+  .custom-file {
+    max-width: 20rem;
+    overflow: hidden;
+    display: none !important;
+  }
+  .custom-file-label {
+    white-space: nowrap;
+  }
+}
