@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <% if @creator_genre.errors.any? %>
+        <h4 class="errors-message">
+          項目が記入されてない箇所があります。
+        </h4>
+        <div id ="error_explanation" class="alert alert-danger">
+          <ul>
+            <% @creator_genre.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <h2 class="mb-4">クリエイタージャンル登録</h2>
+      <%= link_to '一覧', admin_creator_genres_path, class: "btn btn-primary" %>
+      
+      <%= render 'form', { creator_genre: @creator_genre } %>
+    </div>
+  </div>
+</div>
