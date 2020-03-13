@@ -8,7 +8,7 @@
           <div class="form-group">
             <div id="file" class="input-group">
               <label class="btn btn-primary form-control" for="customfile" data-browse="参照">ファイルを選択</label>
-              <div class="custom-file">
+              <div class="work_room_post__custom-file">
                 <%= f.attachment_field :work_room_images_images, id: "customfile", class: "custom-file-input", :multiple => true %>
               </div>
             </div>
@@ -28,7 +28,16 @@
           <h4>クリエイタージャンル</h4>
           <p>この投稿はどのジャンルのものですか？</p>
           
-          
+
+          <%= f.collection_radio_buttons :creator_genre_id, CreatorGenre.all, :id, :name do |b| %>
+            <div class="work_room_post__creator-genre-block mr-3 mb-3">
+              <%= b.radio_button %>
+              <%= b.label { attachment_image_tag(b.object, :genre_image, :fill, 160, 190) } %>
+              <span class="work_room_post__creator-genre-name"><%= b.object.name_en %></span>
+            </div>
+          <% end %>
+
+
         </div>
 
         <div class="work_room_post__tag_post">

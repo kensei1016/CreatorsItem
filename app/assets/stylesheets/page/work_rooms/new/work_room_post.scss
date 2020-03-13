@@ -46,12 +46,51 @@
     height: 100%;
   }
 
-  .custom-file {
+  &__custom-file {
     max-width: 20rem;
     overflow: hidden;
     display: none !important;
   }
-  .custom-file-label {
-    white-space: nowrap;
+
+  &__creator-genre-block {
+    display: inline-block;
+    position: relative;
+
+    label::before {
+      content: "";
+      background-color: white;
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 20px;
+      border: 1px solid black;
+    }
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    input[type="radio"]:checked + label::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 15px;
+      height: 15px;
+      background: #D44940;
+      border-radius: 50%;
+    }
   }
+
+  &__creator-genre-name {
+    position: absolute;
+    left: 10px;
+    bottom: 20px;
+    color: white;
+    font-size: 20px;
+  }
+
 }
