@@ -35,3 +35,6 @@
 
 # irbの起動時読み込みファイル
 /.irbrc
+
+# 環境設定ファイル(dotenv-rails)
+/.env
