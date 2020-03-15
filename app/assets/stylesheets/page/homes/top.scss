@@ -1,0 +1,89 @@
+.top_page {
+  // headline ----------------------
+  &__headline {
+    width: 100%;
+    height: 500px;
+    background-image: image-url('top/siteheader_bg.jpeg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  // 背景黒フィルター
+  &__headline::before {
+    background-color: rgba(0,0,0,0.3);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: ' ';
+  }
+
+  &__headline_message_block {
+    color: white;
+    text-align: center;
+    z-index: 10;
+  }
+
+  &__headline_main_message {
+    font-size: 45px;
+  }
+
+  &__headline_sub_message {
+    font-size: 17px;
+    line-height: 2em;
+  }
+  // headline/ ----------------------
+
+  // work_rooms ----------------------
+  &__post_items {
+    background-color: #ECECEC;
+  }
+
+  &__post_items_block {
+    display: flex;
+  }
+  
+  &__creator_genre_block {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+
+  &__user_profile_block {
+    margin: 3px;
+    margin-bottom: -5px;
+  }
+
+  &__post_item_bottom_contents {
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__post_item_number {
+    font-style: normal !important;
+    font-size: 0.8em;
+  }
+  
+  &__post_item {
+    background-color: white;
+    position: relative;
+    border-radius: 16px; 
+    width: 200px;
+    height: 270px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+
+  .work_room_image {
+   border-radius: 16px;
+
+  }
+  // work_rooms/ ----------------------
+}

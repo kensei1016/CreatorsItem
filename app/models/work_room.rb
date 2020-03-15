@@ -4,6 +4,8 @@ class WorkRoom < ApplicationRecord
   has_many :save_items,         dependent: :destroy
   has_many :creator_items,      dependent: :destroy
   has_many :work_room_images,   dependent: :destroy
+  has_many :favorites,          dependent: :destroy
+  has_many :comments,           dependent: :destroy
 
   accepts_attachments_for :work_room_images, attachment: :image
 

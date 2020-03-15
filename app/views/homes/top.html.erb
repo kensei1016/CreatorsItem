@@ -1,2 +1,60 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="top_page container-fruid">
+  <div class="row">
+    <!-- headline -->
+    <div class="top_page__headline">
+      <div class="top_page__headline_message_block">
+        <p class="top_page__headline_main_message">クリエイターの作業部屋をノゾいてみよう</p>
+        <p class="top_page__headline_sub_message">
+          絵・音楽・料理・プログラミングなど<br>
+          様々なクリエイターが使っているアイテムを<br>
+          共有できるサイトです。
+        </p>
+      </div>
+    </div>
+    <!-- headline/ -->
+    <div class="top_page__side_bar col-3">
+      <h3>探す</h3>
+      <ul>
+        <% CreatorGenre.all.each do |creator_genre| %>
+         <li>
+          <%= link_to work_rooms_path do %>
+            <%= attachment_image_tag creator_genre, :genre_icon_image, :fill, 30, 30 %>
+            <%= creator_genre.name %>
+          <% end %>
+         </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="top_page__post_items col-9">
+      <h3>おすすめ</h3>
+
+      <div class="top_page__post_items_block">
+        <% @work_rooms.each do |work_room| %>
+          <div class="top_page__post_item">
+            <%= attachment_image_tag work_room.work_room_images.first, :image, :fill, 200, 200 %>
+            <div class="top_page__creator_genre_block">
+              <%= attachment_image_tag work_room.creator_genre, :genre_icon_image, :fill, 40, 40 %>
+            </div>
+            <div class="top_page__user_profile_block">
+              <%= attachment_image_tag work_room.user.profile_image, :genre_icon_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png", size: "40x40" %>
+              <span><%= work_room.user.name %></span>
+            </div>
+            <div class="top_page__post_item_bottom_contents">
+              <span class="top_page__post_item_favorites mr-2">
+                <i class="far fa-heart" aria-hidden="true"></i>
+                <em class="top_page__post_item_number"><%= work_room.favorites.count %></em>
+              </span>
+              <span class="top_page__post_item_comments mr-4">
+                <i class="far fa-comment" aria-hidden="true"></i>
+                <em class="top_page__post_item_number"><%= work_room.comments.count %></em>
+              </span>
+              <span class="top_page__post_item_date">
+                <em class="top_page__post_item_number"><%= work_room.created_at.strftime('%Y/%m/%d') %></em>
+              </span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
