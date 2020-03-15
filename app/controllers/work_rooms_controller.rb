@@ -30,7 +30,7 @@ class WorkRoomsController < ApplicationController
   def index_new
   end
 
-  def index_reccomend
+  def index_recomend
   end
 
   def search

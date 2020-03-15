@@ -68,8 +68,8 @@
 
   // side_bar/ ----------------------
 
-  // work_rooms ----------------------
-  &__post_items {
+  // post_items ----------------------
+  &__posts_reccomend {
     background-color: #ECECEC;
   }
 
@@ -87,6 +87,9 @@
   &__user_profile_block {
     margin: 3px;
     margin-bottom: -5px;
+    a {
+      color: black;
+    }
   }
 
   &__post_item_bottom_contents {
@@ -113,7 +116,6 @@
 
   .work_room_image {
    border-radius: 16px;
-
   }
-  // work_rooms/ ----------------------
+  // post_items/ ----------------------
 }
