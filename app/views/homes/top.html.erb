@@ -31,43 +31,32 @@
     </div>
     <!-- sidebar/ -->
     <!-- post_items -->
-    <div class="top_page__posts_reccomend col">
-      <h3 class="mt-5 mb-4">おすすめ</h3>
+    <div class="top_page__posts_block col">
+      <!-- post_items(おすすめ) -->
+      <div class="top_page__posts_reccomend">
+        <h3 class="mt-5 mb-4">おすすめ</h3>
 
-      <div class="top_page__post_items_block">
-        <% @work_rooms.each do |work_room| %>
-          <div class="top_page__post_item">
-            <%= link_to work_room_path(work_room) do %>
-              <%= attachment_image_tag work_room.work_room_images.first, :image, :fill, 200, 200 %>
-            <% end %>
-            <div class="top_page__creator_genre_block">
-              <%= attachment_image_tag work_room.creator_genre, :genre_icon_image, :fill, 40, 40 %>
-            </div>
-            <div class="top_page__user_profile_block">
-              <%= link_to user_path(work_room.user) do %>
-                <%= attachment_image_tag work_room.user.profile_image, :genre_icon_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png", size: "40x40" %>
-                <span><%= work_room.user.name %></span>
-              <% end %>
-            </div>
-            <div class="top_page__post_item_bottom_contents">
-              <span class="top_page__post_item_favorites mr-2">
-                <i class="far fa-heart" aria-hidden="true"></i>
-                <em class="top_page__post_item_number"><%= work_room.favorites.count %></em>
-              </span>
-              <span class="top_page__post_item_comments mr-4">
-                <i class="far fa-comment" aria-hidden="true"></i>
-                <em class="top_page__post_item_number"><%= work_room.comments.count %></em>
-              </span>
-              <span class="top_page__post_item_date">
-                <em class="top_page__post_item_number"><%= work_room.created_at.strftime('%Y/%m/%d') %></em>
-              </span>
-            </div>
-          </div>
-        <% end %>
+        <div class="top_page__post_items_block">
+          <%= render partial: "work_rooms/work_room_card", collection: @work_rooms_recomend, as: "work_room" %>
+        </div>
+        <div class="row mb-3 justify-content-center">
+          <%= link_to 'おすすめをもっと見る', recommend_items_work_rooms_path, class: "btn btn-primary my-primary-btn rounded-pill col-5" %>
+        </div>
       </div>
-      <div class="row mb-3 justify-content-center">
-        <%= link_to 'おすすめをもっと見る', recommend_items_work_rooms_path, class: "btn btn-primary my-primary-btn rounded-pill col-5" %>
+      <!-- post_items(おすすめ)/ -->
+
+      <!-- post_items(新着) -->
+      <div class="top_page__posts_new">
+        <h3 class="mt-5 mb-4">新着</h3>
+
+        <div class="top_page__post_items_block">
+          <%= render partial: "work_rooms/work_room_card", collection: @work_rooms_new, as: "work_room" %>
+        </div>
+        <div class="row mb-3 justify-content-center">
+          <%= link_to '新着をもっと見る', new_items_work_rooms_path, class: "btn btn-primary my-primary-btn rounded-pill col-5" %>
+        </div>
       </div>
+      <!-- post_items(新着)/ -->
     </div>
     <!-- post_items/ -->
   </div>

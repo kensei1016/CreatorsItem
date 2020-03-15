@@ -1,0 +1,39 @@
+.work_room_card {
+  background-color: white;
+  position: relative;
+  border-radius: 16px; 
+  width: 200px;
+  height: 270px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+
+  &__creator_genre_box {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+
+  &__user_profile_box {
+    margin: 3px;
+    margin-bottom: -5px;
+    a {
+      color: black;
+    }
+  }
+
+  &__bottom_contents {
+    padding: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__number {
+    font-style: normal !important;
+    font-size: 0.8em;
+  }  
+
+  .work_room_image {
+   border-radius: 16px;
+  }
+}

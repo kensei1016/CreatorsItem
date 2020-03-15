@@ -1,6 +1,8 @@
 class HomesController < ApplicationController
   def top
-    @work_rooms = WorkRoom.all.includes([:creator_genre]).includes([:user])
+    # TODO: おすすめ順はいいね、閲覧トラッキング実装後に実装する
+    @work_rooms_recomend = WorkRoom.all.includes([:creator_genre]).includes([:user])
+    @work_rooms_new = WorkRoom.all.includes([:creator_genre]).includes([:user]).order(created_at: :desc)
   end
 
   def about

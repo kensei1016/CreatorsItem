@@ -69,53 +69,14 @@
   // side_bar/ ----------------------
 
   // post_items ----------------------
-  &__posts_reccomend {
+  &__posts_block {
     background-color: #ECECEC;
   }
-
+  
   &__post_items_block {
     display: flex;
     flex-wrap: wrap;
   }
   
-  &__creator_genre_block {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-  }
-
-  &__user_profile_block {
-    margin: 3px;
-    margin-bottom: -5px;
-    a {
-      color: black;
-    }
-  }
-
-  &__post_item_bottom_contents {
-    padding: 3px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  &__post_item_number {
-    font-style: normal !important;
-    font-size: 0.8em;
-  }
-  
-  &__post_item {
-    background-color: white;
-    position: relative;
-    border-radius: 16px; 
-    width: 200px;
-    height: 270px;
-    margin-left: 20px;
-    margin-bottom: 20px;
-  }
-
-  .work_room_image {
-   border-radius: 16px;
-  }
   // post_items/ ----------------------
 }
