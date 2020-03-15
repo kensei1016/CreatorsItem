@@ -12,32 +12,42 @@
       </div>
     </div>
     <!-- headline/ -->
-    <div class="top_page__side_bar col-3">
-      <h3>探す</h3>
-      <ul>
+    <!-- sidebar -->
+    <div class="top_page__side_bar col-3 px-5">
+      <h3 class="mt-5 mb-4">探す</h3>
+      <ul class="top_page__creator_genre_list">
         <% CreatorGenre.all.each do |creator_genre| %>
-         <li>
-          <%= link_to work_rooms_path do %>
-            <%= attachment_image_tag creator_genre, :genre_icon_image, :fill, 30, 30 %>
-            <%= creator_genre.name %>
+          <%= link_to work_rooms_path(genre_id: creator_genre.id), class: "top_page__creator_genre_link" do %>
+            <li class="top_page__creator_genre_list_item">
+                <%= attachment_image_tag creator_genre, :genre_icon_image, :fill, 30, 30 %>
+                <%= creator_genre.name %>
+              <span class="top_page__chevron_right_icon">
+                <i class="fas fa-chevron-right" aria-hidden="true" style="color: #707070"></i>
+              <span>
+            </li>
           <% end %>
-         </li>
         <% end %>
       </ul>
     </div>
-    <div class="top_page__post_items col-9">
-      <h3>おすすめ</h3>
+    <!-- sidebar/ -->
+    <!-- post_items -->
+    <div class="top_page__post_items col">
+      <h3 class="mt-5 mb-4">おすすめ</h3>
 
       <div class="top_page__post_items_block">
         <% @work_rooms.each do |work_room| %>
           <div class="top_page__post_item">
-            <%= attachment_image_tag work_room.work_room_images.first, :image, :fill, 200, 200 %>
+            <%= link_to work_room_path(work_room) do %>
+              <%= attachment_image_tag work_room.work_room_images.first, :image, :fill, 200, 200 %>
+            <% end %>
             <div class="top_page__creator_genre_block">
               <%= attachment_image_tag work_room.creator_genre, :genre_icon_image, :fill, 40, 40 %>
             </div>
             <div class="top_page__user_profile_block">
-              <%= attachment_image_tag work_room.user.profile_image, :genre_icon_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png", size: "40x40" %>
-              <span><%= work_room.user.name %></span>
+              <%= link_to user_path(work_room.user) do %>
+                <%= attachment_image_tag work_room.user.profile_image, :genre_icon_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png", size: "40x40" %>
+                <span><%= work_room.user.name %></span>
+              <% end %>
             </div>
             <div class="top_page__post_item_bottom_contents">
               <span class="top_page__post_item_favorites mr-2">
@@ -56,5 +66,6 @@
         <% end %>
       </div>
     </div>
+    <!-- post_items/ -->
   </div>
 </div>

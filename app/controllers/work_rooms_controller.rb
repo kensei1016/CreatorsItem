@@ -4,7 +4,6 @@ class WorkRoomsController < ApplicationController
   end
 
   def create
-    binding.pry
     @work_room = current_user.work_rooms.build(work_room_params)
     if @work_room.save
       redirect_to mypage_path, notice: "投稿が完了しました！"
