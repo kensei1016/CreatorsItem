@@ -43,6 +43,11 @@ group :development, :test do
   gem 'pry-byebug'
   # ダミーデータ生成
   gem 'faker'
+  # デプロイ自動化
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rbenv'
 end
 
 group :development do
@@ -73,9 +78,11 @@ group :test do
   gem "factory_bot_rails"
 end
 
-group :production do
-  gem 'mysql2'
-end
+# group :production do
+#   gem 'mysql2'
+# end
+
+gem 'mysql2'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
