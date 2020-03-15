@@ -1,2 +1,63 @@
-<h1>Homes#top</h1>
-<p>Find me in app/views/homes/top.html.erb</p>
+<div class="top_page container-fruid">
+  <div class="row">
+    <!-- headline -->
+    <div class="top_page__headline">
+      <div class="top_page__headline_message_block">
+        <p class="top_page__headline_main_message">クリエイターの作業部屋をノゾいてみよう</p>
+        <p class="top_page__headline_sub_message">
+          絵・音楽・料理・プログラミングなど<br>
+          様々なクリエイターが使っているアイテムを<br>
+          共有できるサイトです。
+        </p>
+      </div>
+    </div>
+    <!-- headline/ -->
+    <!-- sidebar -->
+    <div class="top_page__side_bar col-3 px-5">
+      <h3 class="mt-5 mb-4">探す</h3>
+      <ul class="top_page__creator_genre_list">
+        <% CreatorGenre.all.each do |creator_genre| %>
+          <%= link_to work_rooms_path(genre_id: creator_genre.id), class: "top_page__creator_genre_link" do %>
+            <li class="top_page__creator_genre_list_item">
+                <%= attachment_image_tag creator_genre, :genre_icon_image, :fill, 30, 30 %>
+                <%= creator_genre.name %>
+              <span class="top_page__chevron_right_icon">
+                <i class="fas fa-chevron-right" aria-hidden="true" style="color: #707070"></i>
+              <span>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+    <!-- sidebar/ -->
+    <!-- post_items -->
+    <div class="top_page__posts_block col">
+      <!-- post_items(おすすめ) -->
+      <div class="top_page__posts_reccomend">
+        <h3 class="mt-5 mb-4">おすすめ</h3>
+
+        <div class="top_page__post_items_block">
+          <%= render partial: "work_rooms/work_room_card", collection: @work_rooms_recomend, as: "work_room" %>
+        </div>
+        <div class="row mb-3 justify-content-center">
+          <%= link_to 'おすすめをもっと見る', recommend_items_work_rooms_path, class: "btn btn-primary my-primary-btn rounded-pill col-5" %>
+        </div>
+      </div>
+      <!-- post_items(おすすめ)/ -->
+
+      <!-- post_items(新着) -->
+      <div class="top_page__posts_new">
+        <h3 class="mt-5 mb-4">新着</h3>
+
+        <div class="top_page__post_items_block">
+          <%= render partial: "work_rooms/work_room_card", collection: @work_rooms_new, as: "work_room" %>
+        </div>
+        <div class="row mb-3 justify-content-center">
+          <%= link_to '新着をもっと見る', new_items_work_rooms_path, class: "btn btn-primary my-primary-btn rounded-pill col-5" %>
+        </div>
+      </div>
+      <!-- post_items(新着)/ -->
+    </div>
+    <!-- post_items/ -->
+  </div>
+</div>

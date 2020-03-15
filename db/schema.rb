@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_09_014214) do
+ActiveRecord::Schema.define(version: 2020_03_15_181642) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
     t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "work_room_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["work_room_id"], name: "index_comments_on_work_room_id"
   end
 
   create_table "creator_genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -50,7 +52,9 @@ ActiveRecord::Schema.define(version: 2020_03_09_014214) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "work_room_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+    t.index ["work_room_id"], name: "index_favorites_on_work_room_id"
   end
 
   create_table "impressions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -134,6 +138,7 @@ ActiveRecord::Schema.define(version: 2020_03_09_014214) do
     t.text "caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "profile_image_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -156,6 +161,8 @@ ActiveRecord::Schema.define(version: 2020_03_09_014214) do
     t.index ["user_id"], name: "index_work_rooms_on_user_id"
   end
 
+  add_foreign_key "comments", "work_rooms"
   add_foreign_key "creator_genres_users", "creator_genres"
   add_foreign_key "creator_genres_users", "users"
+  add_foreign_key "favorites", "work_rooms"
 end

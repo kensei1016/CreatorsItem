@@ -55,7 +55,7 @@
         <div class="work_room_post__tag_post">
           <h4>タグを付ける</h4>
           <p>この投稿に関連するタグを追加してください</p>
-          <div class="work_room_post__tag_post_description" >
+          <div class="work_room_post__tag_post_description mb-3" >
             <p>
               （例）音楽の場合<br>
   　          ・創作物のジャンル → JPOP, HipHop など<br>
@@ -65,7 +65,7 @@
           </div>
           <div class="work_room_post__tag_block">
             <%# 第2引数はvalueのため空欄 %>
-            <%= f.text_field :tag_list, '', "data-role" => "tagsinput" %>
+            <%= f.text_field :tag_list, "data-role" => "tagsinput" %>
           </div>
           
           

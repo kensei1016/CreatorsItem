@@ -22,9 +22,9 @@ Rails.application.routes.draw do
     resource :favorite, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
     collection do
-      get 'new_items',        to: 'work_items#index_new'
-      get 'recommend_items',  to: 'work_items#index_reccomend'
-      get 'search',           to: 'work_items#search'
+      get 'new_items',        to: 'work_rooms#index_new'
+      get 'recommend_items',  to: 'work_rooms#index_recomend'
+      get 'search',           to: 'work_rooms#search'
     end
   end
 
