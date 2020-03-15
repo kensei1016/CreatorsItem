@@ -14,6 +14,7 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
+//= require bootstrap-tagsinput.min
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {

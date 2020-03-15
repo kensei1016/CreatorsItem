@@ -93,4 +93,27 @@
     font-size: 20px;
   }
 
+  &__tag_post_description {
+    background-color: #EBF5F3;
+    border-radius: 5px;
+    padding: 3px;
+
+    p {
+      font-size: 12px;
+      margin-bottom: 0px;
+    }
+  }
+
+  .bootstrap-tagsinput {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 3em;
+    span {
+      padding: 4px;
+      background-color: #D25249;
+      border-radius: 5px;
+    }
+  }
+
 }

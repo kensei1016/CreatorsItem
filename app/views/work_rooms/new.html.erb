@@ -43,12 +43,19 @@
         <div class="work_room_post__tag_post">
           <h4>タグを付ける</h4>
           <p>この投稿に関連するタグを追加してください</p>
-          <p>
-            （例）音楽の場合<br>
-　          ・創作物のジャンル → JPOP, HipHop など<br>
-　          ・パソコンのOS → Windows, Mac など<br>
-          　・アイテムのメーカー → YAMAHA, Roland など<br>
-          </p>
+          <div class="work_room_post__tag_post_description" >
+            <p>
+              （例）音楽の場合<br>
+  　          ・創作物のジャンル → JPOP, HipHop など<br>
+  　          ・パソコンのOS → Windows, Mac など<br>
+            　・アイテムのメーカー → YAMAHA, Roland など<br>
+            </p>
+          </div>
+          <div class="work_room_post__tag_block">
+            <%#= f.label :skill_list, "スキル・特技" %><br>
+            <%= text_field_tag 'user[skill_list]', '', "data-role" => "tagsinput" %>
+          </div>
+          
           
         </div>
 
@@ -61,7 +68,7 @@
         </div>
 
         <div class="form-group">
-          <%= f.submit '投稿を完了する', class:"btn btn-primary form-control" %>
+          <%= f.button '投稿を完了する', class:"btn btn-primary form-control" %>
         </div>
       <% end %>
     </div>

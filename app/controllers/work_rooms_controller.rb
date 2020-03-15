@@ -4,7 +4,7 @@ class WorkRoomsController < ApplicationController
   end
 
   def create
-    binding.pry
+    # binding.pry
   end
 
   def show
