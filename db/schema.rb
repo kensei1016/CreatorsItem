@@ -12,15 +12,15 @@
 
 ActiveRecord::Schema.define(version: 2020_03_09_014214) do
 
-  create_table "comments", force: :cascade do |t|
-    t.integer "user_id"
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id"
     t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "creator_genres", force: :cascade do |t|
+  create_table "creator_genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.string "name_en", null: false
     t.string "genre_icon_image_id"
@@ -29,15 +29,15 @@ ActiveRecord::Schema.define(version: 2020_03_09_014214) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "creator_genres_users", id: false, force: :cascade do |t|
-    t.integer "creator_genre_id", null: false
-    t.integer "user_id", null: false
+  create_table "creator_genres_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "creator_genre_id", null: false
+    t.bigint "user_id", null: false
     t.index ["creator_genre_id"], name: "index_creator_genres_users_on_creator_genre_id"
     t.index ["user_id"], name: "index_creator_genres_users_on_user_id"
   end
 
-  create_table "creator_items", force: :cascade do |t|
-    t.integer "work_room_id"
+  create_table "creator_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "work_room_id"
     t.string "external_site_name", null: false
     t.string "item_url", null: false
     t.string "item_code", null: false
@@ -46,14 +46,14 @@ ActiveRecord::Schema.define(version: 2020_03_09_014214) do
     t.index ["work_room_id"], name: "index_creator_items_on_work_room_id"
   end
 
-  create_table "favorites", force: :cascade do |t|
-    t.integer "user_id"
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
-  create_table "impressions", force: :cascade do |t|
+  create_table "impressions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "impressionable_type"
     t.integer "impressionable_id"
     t.integer "user_id"
@@ -72,32 +72,32 @@ ActiveRecord::Schema.define(version: 2020_03_09_014214) do
     t.index ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index"
     t.index ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index"
     t.index ["impressionable_type", "impressionable_id", "ip_address"], name: "poly_ip_index"
-    t.index ["impressionable_type", "impressionable_id", "params"], name: "poly_params_request_index"
+    t.index ["impressionable_type", "impressionable_id", "params"], name: "poly_params_request_index", length: { params: 255 }
     t.index ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index"
     t.index ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index"
-    t.index ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
+    t.index ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", length: { message: 255 }
     t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
-  create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id"
-    t.integer "followed_id"
+  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "follower_id"
+    t.bigint "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["followed_id"], name: "index_relationships_on_followed_id"
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
-  create_table "save_items", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "work_room_id"
+  create_table "save_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "work_room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_save_items_on_user_id"
     t.index ["work_room_id"], name: "index_save_items_on_work_room_id"
   end
 
-  create_table "taggings", force: :cascade do |t|
+  create_table "taggings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
     t.integer "taggable_id"
@@ -116,15 +116,15 @@ ActiveRecord::Schema.define(version: 2020_03_09_014214) do
     t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
   end
 
-  create_table "tags", force: :cascade do |t|
-    t.string "name"
+  create_table "tags", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name", collation: "utf8_bin"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -138,17 +138,17 @@ ActiveRecord::Schema.define(version: 2020_03_09_014214) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "work_room_images", force: :cascade do |t|
-    t.integer "work_room_id_id"
+  create_table "work_room_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "work_room_id_id"
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["work_room_id_id"], name: "index_work_room_images_on_work_room_id_id"
   end
 
-  create_table "work_rooms", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "creator_genre_id"
+  create_table "work_rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "creator_genre_id"
     t.text "caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -156,4 +156,6 @@ ActiveRecord::Schema.define(version: 2020_03_09_014214) do
     t.index ["user_id"], name: "index_work_rooms_on_user_id"
   end
 
+  add_foreign_key "creator_genres_users", "creator_genres"
+  add_foreign_key "creator_genres_users", "users"
 end
