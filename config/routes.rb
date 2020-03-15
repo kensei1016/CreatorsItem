@@ -14,6 +14,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin do
+    resources :creator_genres
+  end
+
   resources :work_rooms do
     resource :favorite, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]

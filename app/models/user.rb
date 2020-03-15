@@ -20,7 +20,8 @@ class User < ApplicationRecord
 
   has_many :following_user,   through: :follower,
                               source: :followed # 自分がフォローしている人
-  has_many :save_item,  dependent: :destroy
+  has_many :save_items, dependent: :destroy
+  has_many :work_rooms, dependent: :destroy
 
   validates :name,
     presence: true,

@@ -139,11 +139,11 @@ ActiveRecord::Schema.define(version: 2020_03_09_014214) do
   end
 
   create_table "work_room_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.bigint "work_room_id_id"
+    t.bigint "work_room_id"
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["work_room_id_id"], name: "index_work_room_images_on_work_room_id_id"
+    t.index ["work_room_id"], name: "index_work_room_images_on_work_room_id"
   end
 
   create_table "work_rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
