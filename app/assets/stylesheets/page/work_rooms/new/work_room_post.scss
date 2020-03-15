@@ -2,11 +2,25 @@
   background-color: #ECECEC;
   padding: 30px;
 
+  &__require_budge {
+    position: absolute;
+    left: -55px;
+    top: 10px;
+    background-color: #D25249;
+    color: white;
+    width: 3em;
+    border-radius: 5px;
+    text-align: center;
+    display: inline-block;
+    padding: 2px;
+  }
+
   @mixin post_box {
     background-color: white;
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 20px;
+    position: relative;
   }
 
   &__image_post {
@@ -107,7 +121,7 @@
   .bootstrap-tagsinput {
     display: flex;
     align-items: center;
-    width: 50%;
+    width: 100%;
     height: 3em;
     span {
       padding: 4px;
