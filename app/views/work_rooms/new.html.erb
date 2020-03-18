@@ -20,26 +20,15 @@
          <div class="work_room_post__item_post">
           <h4>アイテムを投稿する</h4>
           <p>この作業部屋に写っているアイテムを教えて下さい。</p>
-          <div class="form-group">
-            <%= label_tag '検索ワード' %>
-            <%= text_field_tag '#', '', class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= label_tag '検索サイト' %>
-            <%= radio_button_tag :search_site_name, "楽天", checked: true %>
-            <%= f.label(:search_site_name, "楽天") %>
-            <%= radio_button_tag :search_site_name, "サウンドハウス" %>
-            <%= f.label(:search_site_name, "サウンドハウス") %>
-          </div>
-
-          <%= link_to '検索', '#', class:"btn btn-primary w-100" %>
-
+          <span type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+            検索して追加する
+          </span>
+          <div class="work_room_post__post_items"></div>
         </div>
 
         <div class="work_room_post__creator_genre_post">
           <h4>クリエイタージャンル</h4>
           <p>この投稿はどのジャンルのものですか？</p>
-          
 
           <%= f.collection_radio_buttons :creator_genre_id, CreatorGenre.all, :id, :name do |b| %>
             <div class="work_room_post__creator-genre-block mr-3 mb-3">
@@ -86,6 +75,45 @@
           <%= f.button '投稿を完了する', class:"btn btn-primary form-control" %>
         </div>
       <% end %>
+
+      <!-- モーダルの設定 -->
+      <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalScrollableTitle">投稿するアイテムを選択する</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= form_with url: search_api_work_rooms_path, method: :get, local: false, html: {class: "mb-3"} do |f| %>
+                <div class="form-group">
+                  <%= label_tag '検索ワード' %>
+                  <%= f.text_field :search_word, class: "form-control" %>
+                </div>
+                <div class="form-group">
+                  <%= label_tag '検索サイト' %>
+                  <%= f.radio_button :search_site_name, "楽天", checked: true %>
+                  <%= f.label(:search_site_name, "楽天") %>
+                  <%= f.radio_button :search_site_name, "サウンドハウス" %>
+                  <%= f.label(:search_site_name, "サウンドハウス") %>
+                </div>
+
+                <%= f.submit '検索', class:"btn btn-primary w-100" %>
+              <% end %>
+
+              <div class="work_room_post__search_result">
+              </div>
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">選択を完了する</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

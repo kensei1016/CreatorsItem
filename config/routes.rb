@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       get 'new_items',        to: 'work_rooms#index_new'
       get 'recommend_items',  to: 'work_rooms#index_recomend'
       get 'search',           to: 'work_rooms#search'
+      get 'search_api',       to: 'work_rooms#search_api'
     end
   end
 
