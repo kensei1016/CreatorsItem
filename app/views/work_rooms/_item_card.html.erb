@@ -1,15 +1,21 @@
 <div class="item_select_card">
-  <%= check_box_tag :item_select_check %>
-  <div class="item_select_card__name_box">
-    <p class="item_select_card__name"><%= search_result_item['itemName'] %></p>
-  </div>
-  <div class="w-100 text-center item_select_card__img_box"><img src="<%= search_result_item['mediumImageUrls'][0] %>" alt="" /></div>
-  <div class="item_select_card__price_box">¥<%= search_result_item['itemPrice'] %></div>
+  <label class="item_check_toggle_label">
+    <input type="checkbox" name="item_select_check" class="item_select_check", style="display: none;">
+    <span class="item_select_card__item_add_btn"><i class="fas fa-plus"></i></span>
+    <span class="item_select_card__item_delete_btn" style="display: none"><i class="fas fa-times"></i></span>
+    
+    <div class="item_select_card__name_box">
+      <p class="item_select_card__name"><%= search_result_item['itemName'] %></p>
+    </div>
+    <div class="w-100 text-center item_select_card__img_box"><img src="<%= search_result_item['mediumImageUrls'][0] %>" alt="" /></div>
+    <div class="item_select_card__price_box">¥<%= search_result_item['itemPrice'] %></div>
 
-  <!-- 埋め込みデータ -->
-  <div class="item_select_card__external_site_name" style= "display: none"><%= search_site_name  %></div>
-  <div class="item_select_card__item_site" style= "display: none"><%= search_result_item['itemUrl'] %></div>
-  <div class="item_select_card__item_code" style= "display: none"><%= search_result_item['itemCode'] %></div>
-  <!-- 埋め込みデータ/ -->
+    <!-- 埋め込みデータ -->
+    <div class="item_select_card__external_site_name" style= "display: none"><%= search_site_name  %></div>
+    <div class="item_select_card__item_site" style= "display: none"><%= search_result_item['itemUrl'] %></div>
+    <div class="item_select_card__item_code" style= "display: none"><%= search_result_item['itemCode'] %></div>
+    <!-- 埋め込みデータ/ -->
+
+  </label>
 </div>
 

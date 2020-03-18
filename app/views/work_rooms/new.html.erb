@@ -7,7 +7,7 @@
           <p>ファイルフォーマット：JPEG,PNG<br>５枚までアップロード可能です。</p>
           <div class="form-group">
             <div id="file" class="input-group">
-              <label class="btn btn-primary form-control" for="customfile" data-browse="参照">ファイルを選択</label>
+              <label class="btn btn-primary form-control" for="customfile">ファイルを選択</label>
               <div class="work_room_post__custom-file">
                 <%= f.attachment_field :work_room_images_images, id: "customfile", class: "custom-file-input", :multiple => true %>
               </div>
@@ -105,7 +105,7 @@
 
               <div class="work_room_post__search_result">
               </div>
-              
+
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">選択を完了する</button>

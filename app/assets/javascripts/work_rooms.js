@@ -37,15 +37,16 @@ $(document).on('turbolinks:load', function() {
   //作業部屋の写真投稿/ --------------------------------------
 
   //アイテム投稿 --------------------------------------
+  //modalページで選択した投稿アイテムを投稿ページに表示する
   $('#exampleModalLong').on('hidden.bs.modal', function(e) {
     var $search_result_items = $('.item_select_card').map(function() {
-      if ($(this).children("#item_select_check").prop("checked") == true) {
+      if ($(this).find(".item_select_check").prop("checked") == true) {
         return $(this);
       }
     });
     //選択したアイテムカードを投稿ページに表示する
     $('.work_room_post__post_items').empty();
-    
+
     $search_result_items.each(function() {
       var append_html = 
           '<div class="work_room_post__item_thumbnail_box">' +
@@ -69,10 +70,8 @@ $(document).on('turbolinks:load', function() {
         $(this).parent().remove();
       });
     });
+    
   })
-
-  
-  
 
   //アイテム投稿/ --------------------------------------
 });
