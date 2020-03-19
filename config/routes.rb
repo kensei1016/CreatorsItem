@@ -20,7 +20,8 @@ Rails.application.routes.draw do
 
   resources :work_rooms do
     resource :favorite, only: [:create, :destroy]
-    resources :comments, only: [:create, :destroy]
+    resource :saveitem, only: [:create, :destroy]
+    resources :comments, only: [:create, :edit, :update, :destroy]
     collection do
       get 'new_items',        to: 'work_rooms#index_new'
       get 'recommend_items',  to: 'work_rooms#index_recomend'
