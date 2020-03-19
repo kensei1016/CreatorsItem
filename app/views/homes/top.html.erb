@@ -15,19 +15,7 @@
     <!-- sidebar -->
     <div class="top_page__side_bar col-3 px-5">
       <h3 class="mt-5 mb-4">探す</h3>
-      <ul class="top_page__creator_genre_list">
-        <% CreatorGenre.all.each do |creator_genre| %>
-          <%= link_to work_rooms_path(genre_id: creator_genre.id), class: "top_page__creator_genre_link" do %>
-            <li class="top_page__creator_genre_list_item">
-                <%= attachment_image_tag creator_genre, :genre_icon_image, :fill, 30, 30 %>
-                <%= creator_genre.name %>
-              <span class="top_page__chevron_right_icon">
-                <i class="fas fa-chevron-right" aria-hidden="true" style="color: #707070"></i>
-              <span>
-            </li>
-          <% end %>
-        <% end %>
-      </ul>
+      <%= render 'module/creator_genre_search_list' %>
     </div>
     <!-- sidebar/ -->
     <!-- post_items -->
