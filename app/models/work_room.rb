@@ -15,4 +15,10 @@ class WorkRoom < ApplicationRecord
 
   is_impressionable
 
+  def favorited_by?(user)
+    return false unless user.instance_of?(User)
+
+    # この投稿のいいねにユーザが含まれているかチェック
+    favorites.any? {|favorite| favorite.user_id == user.id}
+  end
 end
