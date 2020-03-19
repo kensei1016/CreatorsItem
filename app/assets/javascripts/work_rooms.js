@@ -58,9 +58,9 @@ $(document).on('turbolinks:load', function() {
             '<div class="px-2"><span class="item_select_card__external_site_name">' + $(this).find('.item_select_card__external_site_name').html() + '</span></div>' +
             '<div class="px-2"><span class="work_room_post__item_price">' + $(this).find('.item_select_card__price_box').html() + '</span></div>' +
 
-            '<input value="' + $(this).find('.item_select_card__item_site').html() + '" type="hidden" name="work_room[creator_items[][item_site_url]]"></input>' +
-            '<input value="' + $(this).find('.item_select_card__external_site_name').html() + '" type="hidden" name="work_room[creator_items[][external_site_name]]"></input>' +
-            '<input value="' + $(this).find('.item_select_card__item_code').html() + '" type="hidden" name="work_room[creator_items[][item_code]"></input>' +
+            '<input value="' + $(this).find('.item_select_card__item_site').html() + '" type="hidden" name="work_room[creator_items_attributes[][item_url]]"></input>' +
+            '<input value="' + $(this).find('.item_select_card__external_site_name').html() + '" type="hidden" name="work_room[creator_items_attributes[][external_site_name]]"></input>' +
+            '<input value="' + $(this).find('.item_select_card__item_code').html() + '" type="hidden" name="work_room[creator_items_attributes[][item_code]"></input>' +
           '</div>';
 
       $('.work_room_post__post_items').append(append_html);
