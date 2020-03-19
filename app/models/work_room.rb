@@ -7,6 +7,7 @@ class WorkRoom < ApplicationRecord
   has_many :favorites,          dependent: :destroy
   has_many :comments,           dependent: :destroy
 
+  accepts_nested_attributes_for :creator_items, allow_destroy: true
   accepts_attachments_for :work_room_images, attachment: :image
 
   acts_as_taggable

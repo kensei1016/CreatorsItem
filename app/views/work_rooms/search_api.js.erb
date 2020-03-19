@@ -1,0 +1,17 @@
+$('.work_room_post__search_result')
+  .html("<%= escape_javascript(render partial: 'item_card', collection: @search_result_items, as: "search_result_item", locals: {search_site_name: @search_site_name} ) %>")
+
+//アイテム追加・削除ボタンのコールバック設定
+$('.item_check_toggle_label').click(function() {
+  $item_select_check = $(this).children(".item_select_check");
+  $item_add_btn = $(this).children('.item_select_card__item_add_btn');
+  $item_delete_btn = $(this).children('.item_select_card__item_delete_btn');
+  
+  if ($item_select_check.is(':checked')) {
+    $item_add_btn.hide();
+    $item_delete_btn.show();
+  } else {
+    $item_add_btn.show();
+    $item_delete_btn.hide();
+  }
+});

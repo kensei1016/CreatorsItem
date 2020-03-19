@@ -110,3 +110,5 @@ gem 'impressionist'
 # SNS認証(Twitter)
 gem 'omniauth'
 gem 'omniauth-twitter'
+# 楽天API
+gem 'rakuten_web_service'
