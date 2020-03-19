@@ -17,8 +17,13 @@ class WorkRoom < ApplicationRecord
 
   def favorited_by?(user)
     return false unless user.instance_of?(User)
-
     # この投稿のいいねにユーザが含まれているかチェック
     favorites.any? {|favorite| favorite.user_id == user.id}
+  end
+
+  def save_item_by?(user)
+    return false unless user.instance_of?(User)
+    # この投稿のいいねにユーザが含まれているかチェック
+    save_items.any? {|save_item| save_item.user_id == user.id}
   end
 end

@@ -113,11 +113,9 @@
           <%= render partial: "favorites/favorite_btn", locals: {work_room: @work_room} %>
         </div>
 
-        <%= link_to work_room_saveitem_path(@work_room), method: :post, remote: true, class: "page-link text-dark d-inline-block rounded-pill post_user__save_item_btn" do %>
-          <span>あとで見る</span>
-          <i class="fas fa-folder-plus"></i>
-        <% end %>
-      </div>
+        <div class="post_user__save_item_btn_block">
+          <%= render partial: "save_items/save_item_btn", locals: {work_room: @work_room} %>
+        </div>
     </div>
     <!-- 投稿ユーザ情報表示/ -->
     <!-- ユーザの他の投稿 -->
