@@ -13,4 +13,6 @@ class WorkRoom < ApplicationRecord
   acts_as_taggable
   # acts_as_taggable_on :tags と同じ意味
 
+  is_impressionable
+
 end

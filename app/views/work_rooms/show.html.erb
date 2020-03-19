@@ -1,2 +1,137 @@
-<h1>WorkRooms#show</h1>
-<p>Find me in app/views/work_rooms/show.html.erb</p>
+<div class="container">
+<div class="row">
+  <!-- 作業部屋詳細のヘッダー -->
+  <div class="work_room_show_header">
+    <h2>
+      <%= attachment_image_tag @work_room.creator_genre, :genre_icon_image, :fill, 40, 40 %>
+      <%= @work_room.user.name %>さんの作業部屋
+    </h2>
+  </div>
+  <!-- 作業部屋詳細のヘッダー/ -->
+  <div class="col-8">
+    <!-- 投稿画像表示 -->
+    <div class="post_image_show">
+      <div class="post_image_show__operation_btns">
+        <span class="post_image_show__looking_count">
+          <i class="fas fa-eye"></i>
+          <%= number_with_delimiter(@page_views) %>
+        </span>
+        <span class="post_image_show__favorite_count">
+          <i class="far fa-heart"></i>
+          <%= @work_room.favorites.count %>
+        </span>
+        <span class="post_image_show__save_count">
+          <i class="fas fa-folder-plus"></i>
+          <%= @work_room.save_items.count %>
+        </span>
+        <div class="edit_btns">
+          <%= link_to '投稿を編集する', edit_work_room_path(@work_room), class: "post_edit_btn btn btn-secondary" %>
+          <%= link_to '投稿を削除する', work_room_path, method: :delete, class: "post_edit_btn btn btn-secondary" %>
+        </div>
+      </div>
+      <div class="post_image_show__tags">
+        <% @work_room.tag_list.each do |tag| %>
+          <span class="post_image_show__tag">
+            #<%= tag %>
+          </span>
+        <% end %>
+      </div>
+      <div class="post_image_show__images">
+        <div id="theTarget">
+          <% @work_room.work_room_images.each do |work_room_image| %>
+            <%= attachment_image_tag work_room_image, :image, fallback: "no-image-book.png" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="post_item_show">
+      <h3>使用しているアイテム</h3>
+      <div class="post_item_show__post_items">
+        <% @work_room.creator_items.each do |creator_item| %>
+          <div class="post_item_show__creator_item_thumbnail">
+            <img src="<%= creator_item.item_image %>">
+            <span class="post_item_show__external_site_name">
+              <%= creator_item.external_site_name %>
+            </span>
+            <span class="post_item_show__item_name">
+              <%= creator_item.item_name %>
+            </span>
+            <span class="post_item_show__item_price">
+              ¥<%= creator_item.item_price %>
+            </span>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <!-- 投稿画像表示/ -->
+    <!-- コメント投稿 -->
+    <div class="post_comment">
+      <!-- コメント投稿フォーム -->
+      <div class="post_comment__comment_input">
+        <%= form_with model: [@work_room, @comment] do |f| %>
+          <% if @comment.errors.any? %>
+            <div id="error_explanation">
+              <ul>
+              <% @comment.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <div class="form-group form-row">
+            <%= f.text_area :comment, rows: '5', class: "form-control", placeholder: "コメントを入力…"%>
+          </div>
+          <div class="form-group form-row justify-content-end">
+            <%= f.submit "投稿する", class: "btn btn-success"%>
+          </div>
+        <% end %>
+      </div>
+      <!-- コメント投稿フォーム/ -->
+      <!-- コメント表示 -->
+      <div class="post_comment__comments_show">
+        <%= render partial: 'comments/comment', collection: @post_comments, as: "post_comment", locals: {work_room: @work_room} %>
+      </div>
+      <!-- コメント表示/ -->
+    </div>
+    <!-- コメント投稿/ -->
+  </div>
+  <div class="col-4">
+    <!-- 投稿ユーザ情報表示 -->
+    <div class="post_user">
+      <div class="post_user__user_profile">
+        <%= attachment_image_tag @work_room.user.profile_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png" %>
+        <% @work_room.user.creator_genres.each do |user_creator_genre| %>
+          <%= attachment_image_tag user_creator_genre.genre_icon_image, :fill, 20, 20 %>
+        <% end %>
+        <%= @work_room.user.name %>
+      </div>
+      <div class="post_user__user_caption">
+        <%= @work_room.caption %>
+      </div>
+      <div class="post_user__reaction_btns">
+        <%= link_to work_room_favorite_path(@work_room), method: :post, class: "btn btn-default" do %>
+          <span>参考になった</span>
+          <i class="far fa-heart"></i>
+        <% end %>
+        <%= link_to work_room_saveitem_path(@work_room), method: :post, class: "btn btn-default" do %>
+          <span>あとで見る</span>
+          <i class="fas fa-folder-plus"></i>
+        <% end %>
+      </div>
+    </div>
+    <!-- 投稿ユーザ情報表示/ -->
+    <!-- ユーザの他の投稿 -->
+    <div class="user_other_posts">
+      <h4>ユーザの他の投稿</h4>
+      <div class="post_items">
+        <% @work_room.user.work_rooms.includes([:creator_genre]).limit(4).each do |work_room| %>
+          <%= attachment_image_tag work_room.work_room_images.first, :image, :fill, 100, 100 %>
+          <%= attachment_image_tag work_room.creator_genre, :genre_icon_image, :fill, 40, 40 %>
+        <% end %>
+        <%= link_to 'もっと見る>>', user_path(@work_room.user) %>
+      </div>
+    </div>
+    <!-- ユーザの他の投稿/ -->
+  </div>
+</div>
+</div>
