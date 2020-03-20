@@ -26,4 +26,10 @@ class CreatorItem < ApplicationRecord
     @search_result_item['itemPrice']
   end
 
+  # アイテムを使用した投稿を全て返す
+  def item_use_work_rooms
+    @same_creator_items = CreatorItem.where("search_word LIKE ?", "%#{search_word}%")
+    @same_creator_items.map(&:work_room)
+  end
+
 end

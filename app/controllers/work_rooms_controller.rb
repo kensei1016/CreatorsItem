@@ -62,7 +62,8 @@ class WorkRoomsController < ApplicationController
   end
 
   def search_api
-    @search_result_items = search_rakuten_api(keyword: params[:search_word])
+    @search_word = params[:search_word]
+    @search_result_items = search_rakuten_api(keyword: @search_word)
     @search_site_name = params[:search_site_name]
   end
 
@@ -76,7 +77,7 @@ class WorkRoomsController < ApplicationController
   def work_room_params
     params.require(:work_room)
         .permit(:creator_genre_id, :caption, :tag_list, :search_site_name,
-                creator_items_attributes: [:item_url, :external_site_name, :item_code],
+                creator_items_attributes: [:search_word, :item_url, :external_site_name, :item_code],
                 work_room_images_images: [])
   end
 

@@ -45,8 +45,6 @@ $(document).on('turbolinks:load', function() {
       }
     });
     //選択したアイテムカードを投稿ページに表示する
-    $('.work_room_post__post_items').empty();
-
     $search_result_items.each(function() {
       var append_html = 
           '<div class="work_room_post__item_thumbnail_box">' +
@@ -58,12 +56,16 @@ $(document).on('turbolinks:load', function() {
             '<div class="px-2"><span class="item_select_card__external_site_name">' + $(this).find('.item_select_card__external_site_name').html() + '</span></div>' +
             '<div class="px-2"><span class="work_room_post__item_price">' + $(this).find('.item_select_card__price_box').html() + '</span></div>' +
 
+            '<input value="' + $(this).find('.item_select_card__search_word').html() + '" type="hidden" name="work_room[creator_items_attributes[][search_word]]"></input>' +
             '<input value="' + $(this).find('.item_select_card__item_site').html() + '" type="hidden" name="work_room[creator_items_attributes[][item_url]]"></input>' +
             '<input value="' + $(this).find('.item_select_card__external_site_name').html() + '" type="hidden" name="work_room[creator_items_attributes[][external_site_name]]"></input>' +
             '<input value="' + $(this).find('.item_select_card__item_code').html() + '" type="hidden" name="work_room[creator_items_attributes[][item_code]"></input>' +
           '</div>';
 
       $('.work_room_post__post_items').append(append_html);
+      //アイテム検索画面の情報をクリアする
+      $('#search_word').val('');
+      $('.work_room_post__search_result').empty();
 
       //アイテム削除ボタンのコールバックを設定
       $('.work_room_post__item_remove_btn').click(function() {
