@@ -1,17 +1,32 @@
 <div class="work_rooms container-fruid">
   <div class="work_rooms__breadcrumbs_list">
-    <% breadcrumb :creator_genre, @creator_genre %>
+    <% if @creator_genre.present? %>
+      <% breadcrumb @creator_genre, style: :bootstrap %>
+    <% elsif @tag_name.present? %>
+      <% breadcrumb :tag, style: :bootstrap %>
+    <% else %>
+    <% end %>
     <%= render 'layouts/breadcrumbs' %>
   </div>
   <div class="row">
     <div class="work_rooms__side_bar col-3 px-5">
+      <h3 class="mt-5 mb-4">ジャンルで絞り込む</h3>
+      <%= render 'module/creator_genre_search_list' %>
+
       <h3 class="mt-5 mb-4">タグで絞り込む</h3>
       <% ActsAsTaggableOn::Tag.most_used.each do |tag| %>
-        <%= link_to tag.name, work_rooms_path(tag_name: tag), class:"page-link text-dark d-inline-block rounded-pill work_rooms__tag_btn" %>
+        <%= link_to tag.name, work_rooms_path(tag_name: tag.name), class:"page-link text-dark d-inline-block rounded-pill work_rooms__tag_btn" %>
       <% end %>
     </div>
     <div class="work_rooms__posts_block col">
-      <h3 class="mt-5 mb-4"><%= @creator_genre.name %>に関する作業部屋</h3>
+      <h3 class="mt-5 mb-4">
+        <% if @creator_genre.present? %>
+          <%= @creator_genre.name %>に関する作業部屋
+        <% elsif @tag_name.present? %>
+          <%= @tag_name %>に関する作業部屋
+        <% else %>
+        <% end %>
+      </h3>
       <div class="top_page__post_items_block">
         <%= render partial: "work_rooms/work_room_card", collection: @work_rooms, as: "work_room" %>
       </div>

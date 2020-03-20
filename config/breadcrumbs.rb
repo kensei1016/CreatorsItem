@@ -10,6 +10,10 @@ crumb :creator_genre do |creator_genre|
   link creator_genre.name, work_rooms_path
 end
 
+crumb :tag do |tag|
+  link params[:tag_name], work_rooms_path
+end
+
 # crumb :projects do
 #   link "Projects", projects_path
 # end
