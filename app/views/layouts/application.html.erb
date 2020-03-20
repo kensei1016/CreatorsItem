@@ -16,11 +16,17 @@
         <%= image_tag "module/header_logo.svg", height: '20' %>
       <% end %>
 
-      <!-- TODO: 検索フォームは後で実装する -->
-      <form class="form-inline my-2 my-lg-0">
-        <input type="search" class="form-control mr-sm-2" placeholder="気になるアイテム、タグで検索" aria-label="検索...">
-        <button type="submit" class="btn btn-outline-success my-2 my-sm-0">検索</button>
-      </form>
+      <!-- 検索フォーム -->
+      <div class="serch-form">
+        <%= search_form_for @q, url: search_work_rooms_path, class: "form-inline navbar-form navbar-right" do |f| %>
+          <div class="form-group">
+            <%= f.label :tags_name_or_caption_or_creator_items_search_word_cont, 'Title', class: 'control-label sr-only' %>
+            <%= f.search_field :tags_name_or_caption_or_creator_items_search_word_cont, placeholder: "気になるアイテム、タグで検索", class: 'form-control' %>
+          </div>
+          <%= f.submit class: "btn btn-warning" %>
+        <% end %>
+      </div>
+      <!-- 検索フォーム/ -->
 
       <nav class="collapse navbar-collapse">
         <ul class="nav navbar-nav ml-auto">
