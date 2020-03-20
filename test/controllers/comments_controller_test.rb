@@ -1,13 +1,13 @@
 require 'test_helper'
 
 class CommentsControllerTest < ActionDispatch::IntegrationTest
-  test "should get create" do
-    get comments_create_url
+  test "should get edit" do
+    get comments_edit_url
     assert_response :success
   end
 
-  test "should get destroy" do
-    get comments_destroy_url
+  test "should get update" do
+    get comments_update_url
     assert_response :success
   end
 

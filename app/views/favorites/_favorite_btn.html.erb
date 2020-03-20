@@ -1,0 +1,11 @@
+<% if work_room.favorited_by?(current_user) %>
+  <%= link_to work_room_favorite_path(work_room), method: :delete, remote: true, class: "page-link d-inline-block rounded-pill post_user__favorite_btn--click" do %>
+    <span>参考になった</span>
+    <i class="far fa-heart"></i>
+  <% end %>
+<% else %>
+  <%= link_to work_room_favorite_path(work_room), method: :post, remote: true, class: "page-link text-dark d-inline-block rounded-pill post_user__favorite_btn" do %>
+    <span>参考になった</span>
+    <i class="far fa-heart"></i>
+  <% end %>
+<% end %>

@@ -1,0 +1,4 @@
+$('.post_comment__comments_show')
+  .append("<%= escape_javascript(render partial: 'comment', locals: {post_comment: @comment, work_room: @work_room} ) %>")
+
+$('#comment_comment').val("");
