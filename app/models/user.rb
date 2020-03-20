@@ -28,4 +28,10 @@ class User < ApplicationRecord
   validates :name,
     presence: true,
     length: { minimum: 1, maximum:30 }
+
+  # 自分の投稿がいいねされた回数
+  def post_favorite_count
+    work_room_ids = work_rooms.map{|work_room| work_room.id }
+    Favorite.where(work_room_id: work_room_ids).count
+  end
 end

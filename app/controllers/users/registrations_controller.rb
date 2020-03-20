@@ -14,15 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
     # クリエイタージャンル設定処理
     if resource.errors.empty?
-      creator_genre_ids = params[:user][:creator_genres]
-      if creator_genre_ids.present?
-        # 配列の最初の要素は空で来るためsliceする
-        creator_genre_ids.slice(1..-1).each do |creator_genre_id|
-          unless current_user.creator_genres.exists?(creator_genre_id)
-            current_user.creator_genres << CreatorGenre.find(creator_genre_id)
-          end
-        end
-      end
+      save_creator_genre(resource)
     end
     # 他のジャンルであれば新規登録して、ユーザに関連付ける
     if params[:creator_other_genre_check].present? && params[:creator_other_genre].present?
@@ -39,9 +31,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    super
+    if resource.errors.empty?
+      save_creator_genre(resource)
+    end
+  end
 
   # DELETE /resource
   # def destroy
@@ -57,7 +52,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  def save_creator_genre(resource)
+    return unless resource.instance_of?(User)
+    creator_genre_ids = params[:user][:creator_genre_ids]
+    if creator_genre_ids.present?
+      # 現在の設定を一度クリアする
+      resource.creator_genres.destroy_all
+      # 配列の最初の要素は空で来るためsliceする
+      creator_genre_ids.slice(1..-1).each do |creator_genre_id|
+        unless resource.creator_genres.exists?(creator_genre_id)
+          resource.creator_genres << CreatorGenre.find(creator_genre_id)
+        end
+      end
+    end
+  end
+
+  protected
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params

@@ -1,43 +1,40 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="user_edit" container-fluid">
+  <div class="row h-100 justify-content-center">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <div class="form-group">
+        <%= f.label "プロフィール画像", class: "control-label" %>
+        <%= f.attachment_field :profile_image, class: "form-control" %>
+        <%= render partial: "module/error_message", locals: {resource: resource, attr: :profile_image} %>
+      </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="form-group">
+        <%= f.label "名前", class: "control-label" %>
+        <%= f.text_field :name, autocomplete: "name", placeholder: "名前", class:"form-control" %>
+        <%= render partial: "module/error_message", locals: {resource: resource, attr: :name} %>
+      </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <div class="form-group">
+        <%= f.label :email, class: "control-label" %>
+        <%= f.email_field :email, placeholder: "メールアドレス", autocomplete: "email", class:"form-control" %>
+        <%= render partial: "module/error_message", locals: {resource: resource, attr: :email} %>
+      </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+      <div class="form-group">
+        <%= label_tag :creator_other_genre_check , "クリエイタージャンル" %>
+        <%= f.collection_check_boxes(:creator_genre_ids, CreatorGenre.all, :id, :name) do |b| %>
+          <%= b.label { b.check_box + b.text } %>
+        <% end %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <div class="form-group">
+        <%= f.label "コメント", class: "control-label" %>
+        <%= f.text_area :caption, rows: '5', autocomplete: "name", placeholder: "ここに入力してください...", class:"form-control" %>
+        <%= render partial: "module/error_message", locals: {resource: resource, attr: :caption} %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "変更を確定する", class:"btn btn-success form-control" %>
+      </div>
     <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

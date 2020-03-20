@@ -7,7 +7,7 @@
   </div>
   <div class="work_room_card__user_profile_box">
     <%= link_to user_path(work_room.user) do %>
-      <%= attachment_image_tag work_room.user.profile_image, :genre_icon_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png", size: "40x40" %>
+      <%= attachment_image_tag work_room.user, :profile_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png", size: "40x40" %>
       <span><%= work_room.user.name %></span>
     <% end %>
   </div>
