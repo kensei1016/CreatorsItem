@@ -39,6 +39,7 @@ class WorkRoomsController < ApplicationController
   end
 
   def index_recomend
+    @work_rooms_recomend = WorkRoom.all.page(params[:page])
   end
 
   def search

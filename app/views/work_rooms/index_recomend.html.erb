@@ -1,2 +1,32 @@
-<% breadcrumb :recommend_items %>
-<%= render 'layouts/breadcrumbs' %>
+<div class="work_rooms_recomend container-fruid">
+  <div class="work_rooms_recomend__breadcrumbs_list">
+    <% breadcrumb :recommend_items %>
+    <%= render 'layouts/breadcrumbs' %>
+  </div>
+  <div class="row">
+    <div class="work_rooms_recomend__side_bar col-3 px-5">
+      <h3 class="mt-5 mb-4">ジャンルで絞り込む</h3>
+      <%= render 'module/creator_genre_search_list' %>
+
+      <h3 class="mt-5 mb-4">タグで絞り込む</h3>
+      <% ActsAsTaggableOn::Tag.most_used.each do |tag| %>
+        <%= link_to tag.name, work_rooms_path(tag_name: tag), class:"page-link text-dark d-inline-block rounded-pill work_rooms_recomend__tag_btn" %>
+      <% end %>
+    </div>
+    <div class="work_rooms_recomend__posts_block col">
+      <h3 class="mt-5 mb-4">おすすめ一覧</h3>
+      <div class="top_page__post_items_block">
+        <%= render partial: "work_rooms/work_room_card", collection: @work_rooms_recomend, as: "work_room" %>
+      </div>
+
+      <div class="work_rooms_recomend__paginate"></div>
+        <div class="row mb-3 justify-content-center">
+          <%= link_to_next_page @work_rooms_recomend, '次のページ', class: "btn btn-primary my-primary-btn rounded-pill col-5" %>
+        </div>
+
+        <%= paginate @work_rooms_recomend %>
+        <%= page_entries_info @work_rooms_recomend, entry_name: ' item ' %>
+      </div>
+    </div>
+  </div>
+</div>
