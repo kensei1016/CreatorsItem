@@ -1,6 +1,6 @@
 <div class="post_comment__comment_box">
   <div class="post_comment__commenter_user_profile">
-    <%= attachment_image_tag post_comment.user.profile_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png" %>
+    <%= attachment_image_tag post_comment.user, :profile_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png" %>
     <span><%= post_comment.user.name %></span>
   </div>
   <span class="post_comment__comment_date">

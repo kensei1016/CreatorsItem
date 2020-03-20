@@ -1,5 +1,5 @@
 $('.work_room_post__search_result')
-  .html("<%= escape_javascript(render partial: 'item_card', collection: @search_result_items, as: "search_result_item", locals: {search_site_name: @search_site_name} ) %>")
+  .html("<%= escape_javascript(render partial: 'item_card', collection: @search_result_items, as: "search_result_item", locals: {search_site_name: @search_site_name, search_word: @search_word} ) %>")
 
 //アイテム追加・削除ボタンのコールバック設定
 $('.item_check_toggle_label').click(function() {

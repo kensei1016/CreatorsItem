@@ -1,2 +1,22 @@
-<h1>CreatorItems#show</h1>
-<p>Find me in app/views/creator_items/show.html.erb</p>
+<div class="creator_item container">
+  <div class="row">
+    <div class="col-3">
+      <img src="<%= @creator_item.item_image %>">
+    </div>
+    <div class="col">
+      <div class="creator_item__item_info">
+        <div><%= @creator_item.item_name %></div>
+        <div>販売サイト:<%= @creator_item.external_site_name %></div>
+        <div>¥<%= @creator_item.item_price %></div>
+      </div>
+      <div class="creator_item__external_site_btns">
+        <a href="<%= @creator_item.item_url %>" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">販売サイトへ</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="creator_item__item_use_work_rooms">
+    <h2><%= @creator_item.item_name %>が使われている作業部屋</h2>
+    <%= render partial: "work_rooms/work_room_card", collection: @creator_item.item_use_work_rooms, as: "work_room" %>
+  </div>
+</div>
