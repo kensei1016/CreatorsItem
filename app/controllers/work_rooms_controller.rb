@@ -52,6 +52,7 @@ class WorkRoomsController < ApplicationController
   end
 
   def index_new
+    @work_rooms_new = WorkRoom.all.order(created_at: :desc).page(params[:page])
   end
 
   def index_recomend
