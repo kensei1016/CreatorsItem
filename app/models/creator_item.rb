@@ -1,8 +1,12 @@
 class CreatorItem < ApplicationRecord
   belongs_to :work_room
 
+  # オブジェクトがインスタンス化されるタイミングで実行（findのときも）
   after_initialize do |creator_item|
-    @search_result_item = RakutenWebService::Ichiba::Item.search(itemCode: item_code).first
+    if item_code.present?
+      puts "楽天APIの検索"
+      @search_result_item = RakutenWebService::Ichiba::Item.search(itemCode: item_code).first
+    end
   end
 
   # after_find do |creator_item|

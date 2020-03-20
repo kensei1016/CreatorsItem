@@ -105,6 +105,8 @@ gem 'dotenv-rails'
 gem 'ransack'
 # タグ付け
 gem 'acts-as-taggable-on'
+# パンくずリスト
+gem "gretel"
 # トラッキング
 gem 'impressionist'
 # SNS認証(Twitter)

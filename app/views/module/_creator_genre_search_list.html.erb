@@ -1,0 +1,13 @@
+<ul class="creator_genre_search_list">
+  <% CreatorGenre.all.each do |creator_genre| %>
+    <%= link_to work_rooms_path(genre_id: creator_genre.id), class: "creator_genre_search_list__creator_genre_link" do %>
+      <li class="creator_genre_search_list__creator_genre_list_item">
+        <%= attachment_image_tag creator_genre, :genre_icon_image, :fill, 30, 30 %>
+        <%= creator_genre.name %>
+        <span class="creator_genre_search_list__chevron_right_icon">
+          <i class="fas fa-chevron-right" aria-hidden="true" style="color: #707070"></i>
+        <span>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

@@ -33,12 +33,29 @@ class WorkRoomsController < ApplicationController
   end
 
   def index
+    @work_rooms = WorkRoom.all
+
+    # ジャンルによる絞り込みがある場合
+    if params[:genre_id].present?
+        @creator_genre = CreatorGenre.find(params[:genre_id])
+        @work_rooms = @work_rooms.where(creator_genre_id: @creator_genre.id)
+    end
+
+    # タグによる絞り込みがある場合
+    if params[:tag_name].present?
+      @tag_name = params[:tag_name]
+      @work_rooms = @work_rooms.tagged_with(@tag_name)
+    end
+    
+    @work_rooms = @work_rooms.page(params[:page])
+    
   end
 
   def index_new
   end
 
   def index_recomend
+    @work_rooms_recomend = WorkRoom.all.page(params[:page])
   end
 
   def search

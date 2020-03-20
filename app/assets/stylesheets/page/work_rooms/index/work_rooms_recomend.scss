@@ -1,0 +1,12 @@
+.work_rooms_recomend {
+  &__posts_block {
+    background-color: #E5E5E5;
+  }
+
+  &__tag_btn {
+    &--click {
+      background-color: #D25249 !important;
+      color: white !important;
+    }
+  }
+}
