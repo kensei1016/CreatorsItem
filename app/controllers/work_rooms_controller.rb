@@ -24,12 +24,20 @@ class WorkRoomsController < ApplicationController
   end
 
   def edit
+    @work_room = WorkRoom.find(params[:id])
   end
 
   def update
+    @work_room = WorkRoom.find(params[:id])
+    if @work_room.update(work_room_params)
+      redirect_to current_user, notice: "投稿を更新しました。"
+    end
   end
 
   def destroy
+    work_room = WorkRoom.find(params[:id])
+    work_room.destroy
+    redirect_to current_user, notice: "投稿を削除しました。"
   end
 
   def index

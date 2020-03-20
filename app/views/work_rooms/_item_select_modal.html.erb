@@ -1,0 +1,37 @@
+<!-- アイテム検索・選択画面（モーダル） -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalScrollableTitle">投稿するアイテムを選択する</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_with url: search_api_work_rooms_path, method: :get, local: false, html: {class: "mb-3"} do |f| %>
+          <div class="form-group">
+            <%= label_tag '検索ワード' %>
+            <%= f.text_field :search_word, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= label_tag '検索サイト' %>
+            <%= f.radio_button :search_site_name, "楽天", checked: true %>
+            <%= f.label(:search_site_name, "楽天") %>
+            <%= f.radio_button :search_site_name, "サウンドハウス" %>
+            <%= f.label(:search_site_name, "サウンドハウス") %>
+          </div>
+
+          <%= f.submit '検索', class:"btn btn-primary w-100" %>
+        <% end %>
+
+        <div class="work_room_post__search_result">
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">選択を完了する</button>
+      </div>
+    </div>
+  </div>
+</div>
