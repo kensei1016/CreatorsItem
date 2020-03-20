@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => {
     :registrations => 'users/registrations'
   }
-  get 'mypage', to: 'users#show', as: :mypage
+  get 'mypage', to: 'users#mypage', as: :mypage
   resources :users, only: :show do
     resource :relationship, only: [:create, :destroy]
     member do
