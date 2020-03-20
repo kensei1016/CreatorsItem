@@ -6,6 +6,10 @@ crumb :recommend_items do
   link "おすすめ", recommend_items_work_rooms_path
 end
 
+crumb :new_items do
+  link "新着", new_items_work_rooms_path
+end
+
 crumb :creator_genre do |creator_genre|
   link creator_genre.name, work_rooms_path
 end
