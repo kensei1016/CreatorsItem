@@ -33,6 +33,8 @@ class WorkRoomsController < ApplicationController
   end
 
   def index
+    @creator_genre = CreatorGenre.find(params[:genre_id])
+    @work_rooms = WorkRoom.where(creator_genre_id: @creator_genre.id).page(params[:page])
   end
 
   def index_new

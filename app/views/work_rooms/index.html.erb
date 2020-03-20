@@ -1,2 +1,32 @@
-<h1>WorkRooms#index</h1>
-<p>Find me in app/views/work_rooms/index.html.erb</p>
+<div class="work_rooms container-fruid">
+  <div class="work_rooms__breadcrumbs_list">
+    <% breadcrumb :creator_genre, @creator_genre %>
+    <%= render 'layouts/breadcrumbs' %>
+  </div>
+  <div class="row">
+    <div class="work_rooms__side_bar col-3 px-5">
+      <h3 class="mt-5 mb-4">タグで絞り込む</h3>
+      <% ActsAsTaggableOn::Tag.most_used.each do |tag| %>
+        <%= link_to tag.name, work_rooms_path(tag_name: tag), class:"page-link text-dark d-inline-block rounded-pill work_rooms__tag_btn" %>
+      <% end %>
+    </div>
+    <div class="work_rooms__posts_block col">
+      <h3 class="mt-5 mb-4">よく使われているアイテム</h3>
+      
+
+      <h3 class="mt-5 mb-4"><%= @creator_genre.name %>に関する作業部屋</h3>
+      <div class="top_page__post_items_block">
+        <%= render partial: "work_rooms/work_room_card", collection: @work_rooms, as: "work_room" %>
+      </div>
+
+      <div class="work_rooms__paginate"></div>
+        <div class="row mb-3 justify-content-center">
+          <%= link_to_next_page @work_rooms, '次のページ', class: "btn btn-primary my-primary-btn rounded-pill col-5" %>
+        </div>
+
+        <%= paginate @work_rooms %>
+        <%= page_entries_info @work_rooms, entry_name: ' item ' %>
+      </div>
+    </div>
+  </div>
+</div>
