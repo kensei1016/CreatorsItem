@@ -1,9 +1,9 @@
 <div class="work_rooms container-fruid">
   <div class="work_rooms__breadcrumbs_list">
     <% if @creator_genre.present? %>
-      <% breadcrumb @creator_genre, style: :bootstrap %>
+      <% breadcrumb @creator_genre %>
     <% elsif @tag_name.present? %>
-      <% breadcrumb :tag, style: :bootstrap %>
+      <% breadcrumb :tag, params[:tag_name] %>
     <% else %>
     <% end %>
     <%= render 'layouts/breadcrumbs' %>

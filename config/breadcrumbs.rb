@@ -11,11 +11,48 @@ crumb :new_items do
 end
 
 crumb :creator_genre do |creator_genre|
-  link creator_genre.name, work_rooms_path
+  link creator_genre.name, work_rooms_path(genre_id: creator_genre.id)
 end
 
-crumb :tag do |tag|
-  link params[:tag_name], work_rooms_path
+crumb :tag do |tag_name|
+  link tag_name, work_rooms_path(tag_name: tag_name)
+end
+
+crumb :work_room do |work_room|
+  
+  link "作業部屋詳細", work_room_path
+
+  request_referer = request.referer
+  # おすすめ一覧からの遷移
+  if request_referer&.include?("recommend_items")
+    parent :recommend_items
+  # 新着一覧からの遷移
+  elsif request_referer&.include?("new_items")
+    parent :new_items
+  # ジャンル検索からの遷移
+  elsif request_referer&.include?("genre_id")
+    parent :creator_genre, work_room.creator_genre
+  # タグ検索からの遷移
+  elsif request_referer&.include?("tag_name")
+    # 遷移元ページのパラメータをhashに変換して取り出す
+    uri = URI::parse(request.referer)
+    begin
+      q_array = URI::decode_www_form(uri.query)
+      q_hash = Hash[q_array]
+    rescue
+      q_hash = {}
+    end
+
+    parent :tag, q_hash["tag_name"]
+  # トップページからの遷移（もしくはURL指定）
+  else
+    parent :root
+  end
+  
+end
+
+def referer_params_to_hash(referer)
+  
 end
 
 # crumb :projects do
