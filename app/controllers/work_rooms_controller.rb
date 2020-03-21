@@ -69,8 +69,6 @@ class WorkRoomsController < ApplicationController
 
   def search
     @work_rooms = @q.result(distinct: true).includes([:creator_genre, :user]).page(params[:page]).reverse_order
-
-    render :index
   end
 
   def search_api

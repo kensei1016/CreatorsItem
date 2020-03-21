@@ -14,9 +14,7 @@
       <%= render 'module/creator_genre_search_list' %>
 
       <h3 class="mt-5 mb-4">タグで絞り込む</h3>
-      <% ActsAsTaggableOn::Tag.most_used.each do |tag| %>
-        <%= link_to tag.name, work_rooms_path(tag_name: tag.name), class:"page-link text-dark d-inline-block rounded-pill work_rooms__tag_btn" %>
-      <% end %>
+      <%= render partial: "module/tag_search_box" %>
     </div>
     <div class="work_rooms__posts_block col">
       <h3 class="mt-5 mb-4">

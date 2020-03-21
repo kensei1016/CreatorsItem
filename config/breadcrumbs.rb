@@ -14,6 +14,10 @@ crumb :creator_genre do |creator_genre|
   link creator_genre.name, work_rooms_path(genre_id: creator_genre.id)
 end
 
+crumb :search do
+  link "検索結果"
+end
+
 crumb :tag do |tag_name|
   link tag_name, work_rooms_path(tag_name: tag_name)
 end
