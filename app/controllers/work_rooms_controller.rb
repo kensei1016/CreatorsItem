@@ -60,11 +60,11 @@ class WorkRoomsController < ApplicationController
   end
 
   def index_new
-    @work_rooms_new = WorkRoom.all.order(created_at: :desc).page(params[:page])
+    @work_rooms_new = WorkRoom.all.includes([:creator_genre, :user]).order(created_at: :desc).page(params[:page])
   end
 
   def index_recomend
-    @work_rooms_recomend = WorkRoom.all.page(params[:page])
+    @work_rooms_recomend = WorkRoom.all.includes([:creator_genre, :user]).page(params[:page])
   end
 
   def search
