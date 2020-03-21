@@ -1,0 +1,82 @@
+<div class="about_page container mt-5">
+
+  <h2 class="about_page__main_message">クリエイターが使っているアイテムを知りたくはありませんか？</h2>
+  <p class="about_page__sub_message">
+    何か新しいことを始めたいとき、<br>
+    避けては通れないのが「アイテム選び」<br>
+    Creators Itemはそんな瞬間に皆様の力になりたいと思っています<br>
+  </p>
+
+  <div class="about_page__contents_box row justify-content-center">
+    <div class="about_page__content col-4">
+      <% genre_music = creator_genres.find_by(name_en: "music") %>
+      <%= attachment_image_tag genre_music, :genre_image, class: "about_page__creator_genre_img" %>
+      <h4 class="about_page__content_title"><%= genre_music.name %></h4>
+      <p>
+        楽器やスピーカー、ヘッドホンなど<br>
+        アイテムごとに様々なメーカーがあり、<br>
+        それぞれのアイテムに相性があります。
+      </p>
+    </div>
+
+    <div class="about_page__content col-4">
+      <% genre_illustrator = creator_genres.find_by(name_en: "illustrator") %>
+      <%= attachment_image_tag genre_illustrator, :genre_image, class: "about_page__creator_genre_img" %>
+      <h4 class="about_page__content_title"><%= genre_illustrator.name %></h4>
+      <p>
+        デジタルペイントが主流に<br>
+        なっている現在、ペンタブレットや<br>
+        ディスプレイなどデジタルで絵を書くための<br>
+        道具を選ばなければいけません
+      </p>
+    </div>
+
+    <div class="about_page__content col-4">
+      <% genre_cooking = creator_genres.find_by(name_en: "cooking") %>
+      <%= attachment_image_tag genre_cooking, :genre_image, class: "about_page__creator_genre_img" %>
+      <h4 class="about_page__content_title"><%= genre_cooking.name %></h4>
+      <p>
+        料理は様々な道具を駆使して作ります。<br>
+        包丁やまな板以外にも<br>
+        毎日の料理を楽しく・快適にする道具は<br>
+        たくさんあります。
+      </p>
+    </div>
+
+    <div class="about_page__content col-4">
+      <% genre_music = creator_genres.find_by(name_en: "music") %>
+      <%= attachment_image_tag genre_music, :genre_image, class: "about_page__creator_genre_img" %>
+      <h4 class="about_page__content_title"><%= genre_music.name %></h4>
+      <p>
+        楽器やスピーカー、ヘッドホンなど<br>
+        アイテムごとに様々なメーカーがあり、<br>
+        それぞれのアイテムに相性があります。
+      </p>
+    </div>
+
+    <div class="about_page__content col-4">
+      <% genre_illustrator = creator_genres.find_by(name_en: "illustrator") %>
+      <%= attachment_image_tag genre_illustrator, :genre_image, class: "about_page__creator_genre_img" %>
+      <h4 class="about_page__content_title"><%= genre_illustrator.name %></h4>
+      <p>
+        デジタルペイントが主流に<br>
+        なっている現在、ペンタブレットや<br>
+        ディスプレイなどデジタルで絵を書くための<br>
+        道具を選ばなければいけません
+      </p>
+    </div>
+
+    <div class="about_page__content col-4">
+      <% genre_cooking = creator_genres.find_by(name_en: "cooking") %>
+      <%= attachment_image_tag genre_cooking, :genre_image, class: "about_page__creator_genre_img" %>
+      <h4 class="about_page__content_title"><%= genre_cooking.name %></h4>
+      <p>
+        料理は様々な道具を駆使して作ります。<br>
+        包丁やまな板以外にも<br>
+        毎日の料理を楽しく・快適にする道具は<br>
+        たくさんあります。
+      </p>
+    </div>
+  </div>
+
+</div>
