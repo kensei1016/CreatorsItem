@@ -118,8 +118,16 @@
   }
   // 投稿者コメント/ -------------------------
 
+  // 投稿評価ボタン -------------------------
+  &__reaction_btns {
+    display: flex;
+    margin-bottom: 40px;
+  }
+
   &__favorite_btn {
+    margin-right: 10px;
     &--click {
+      margin-right: 10px;
       background-color: #D25249 !important;
       color: white !important;
     }
@@ -131,5 +139,29 @@
       color: white !important;
     }
   }
+  // 投稿評価ボタン/ -------------------------
 
+  // ユーザの他の投稿 -------------------------
+  &__user_other_posts_title {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+
+  &__other_post_items {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__other_post_item {
+    margin-right: 5px;
+    margin-bottom: 5px;
+    position: relative;
+  }
+
+  &__other_post_genre_img {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+  // ユーザの他の投稿/ -------------------------
 }

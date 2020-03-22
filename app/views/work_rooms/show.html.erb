@@ -52,7 +52,7 @@
             <% end %>
           </div>
         </div>
-        <!-- 投稿画像/s -->
+        <!-- 投稿画像/ -->
       </div>
       <div class="work_room_show__post_item_block">
         <h4 class="work_room_show__post_item_title">使用しているアイテム</h4>
@@ -136,7 +136,6 @@
           <div class="work_room_show__favorite_btn_block">
             <%= render partial: "favorites/favorite_btn", locals: {work_room: @work_room} %>
           </div>
-
           <div class="work_room_show__save_item_btn_block">
             <%= render partial: "save_items/save_item_btn", locals: {work_room: @work_room} %>
           </div>
@@ -144,13 +143,19 @@
       <!-- 投稿評価ボタン/ -->
       <!-- ユーザの他の投稿 -->
       <div class="work_room_show__user_other_posts">
-        <h4>ユーザの他の投稿</h4>
+        <h4 class="work_room_show__user_other_posts_title">ユーザの他の投稿</h4>
         <div class="work_room_show__other_post_items">
-          <% @work_room.user.work_rooms.includes([:creator_genre]).limit(4).each do |work_room| %>
-            <%= attachment_image_tag work_room.work_room_images.first, :image, :fill, 100, 100 %>
-            <%= attachment_image_tag work_room.creator_genre, :genre_icon_image, :fill, 40, 40 %>
+          <% @work_room.user.work_rooms.where.not(id: @work_room.id).includes([:creator_genre]).limit(6).each do |work_room| %>
+            <div class="work_room_show__other_post_item">
+              <%= link_to work_room_path(work_room) do %>
+                <%= attachment_image_tag work_room.work_room_images.first, :image, :fill, 100, 100 %>
+                <%= attachment_image_tag work_room.creator_genre, :genre_icon_image, :fill, 25, 25, class: "work_room_show__other_post_genre_img" %>
+              <% end %>
+            </div>
           <% end %>
-          <%= link_to 'もっと見る>>', user_path(@work_room.user) %>
+        </div>
+        <div>
+          <%= link_to 'もっと見る >', user_path(@work_room.user) %>
         </div>
       </div>
       <!-- ユーザの他の投稿/ -->
