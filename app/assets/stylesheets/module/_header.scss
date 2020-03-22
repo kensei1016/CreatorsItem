@@ -1,4 +1,5 @@
 .header {
+  // 新規登録・ログイン
   &__sign-up-link {
     position: relative;
 
@@ -11,7 +12,9 @@
       background-color: rgba(68, 68, 68, 0.5);
     }
   }
+  // 新規登録・ログイン/
 
+  // ユーザメニュー
   &__user-profile-group {
     position: relative;
   }
@@ -20,33 +23,57 @@
     list-style-type: none;
     margin: 0 auto;
     padding: 0;
-    border: 1px solid;
+    /* border: 1px solid; */
     position: absolute;
-    width: 140px;
+    box-shadow: aliceblue;
+    box-shadow: 3px 3px 8px 0px rgba(0,0,0,0.6);
+    width: 200px;
     right: 0;
     top: 50px;
     display: none;
-    z-index: 100;
+    z-index: 999;
   }
 
   &__account-menu-item {
     background-color: white;
     padding: 0 10px;
-    border-bottom: 1px solid black;
+    // border-bottom: 1px solid black;
     &:nth-last-child(1) {
       border-bottom: 0;
     }
     height: 2em;
     display: flex;
+    &:hover {
+      background-color: #e8e6e6
+    }
 
     a {
-      color: black;
+      color: #496b4b;
       width: 100%;
       // 親要素の高さに行高を合わせて縦中央に配置
       line-height: 2em;
       &:hover {
-        color: black;
+        color: #496b4b;
+        text-decoration: none;
       }
     }
   }
+  // ユーザメニュー
+
+  // 検索ボックス
+  &__search_form_block {
+    position: relative;
+  }
+
+  &__search_form {
+    width: 20em !important;
+  }
+
+  &__search_btn {
+    background: none;
+    border: none;
+    position: absolute;
+    right: 10px;
+  }
+  // 検索ボックス/
 }
