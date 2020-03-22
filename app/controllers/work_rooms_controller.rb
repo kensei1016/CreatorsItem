@@ -20,7 +20,7 @@ class WorkRoomsController < ApplicationController
     @page_views = @work_room.impressionist_count
 
     @comment = Comment.new
-    @post_comments = Comment.where(work_room_id: @work_room.id).includes([:user])
+    @post_comments = Comment.where(work_room_id: @work_room.id).includes([:user]).order(created_at: :desc)
   end
 
   def edit

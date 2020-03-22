@@ -3,8 +3,96 @@
     width: 100%;
   }
 
+  // ヘッダー -------------------------
   &__header {
     width: 100%;
-    // background-color: #F3F3F3;
   }
+  // ヘッダー/ -------------------------
+
+  // 投稿画像表示 -------------------------
+  &__operation_btns {
+    margin-bottom: 5px;
+  }
+
+  &__repute_display {
+    margin-right: 10px;
+  }
+
+  &__images {
+    width: 700px;
+    height: 500px;
+  }
+
+  #theTarget {
+    border-radius: 3%;
+  }
+  // 投稿画像表示/ -------------------------
+
+  // 使用しているアイテム -------------------------
+  &__post_item_block {
+    margin-bottom: 20px;
+  }
+
+  &__post_item_title {
+    font-size: 1.3rem;
+    margin: 30px 0 5px;
+  }
+
+  &__post_items {
+    display: flex;
+    padding-top: 10px;
+  }
+
+  &__creator_item_thumbnail {
+    border: 1px solid #707070;
+    border-radius: 26px;
+    width: 170px;
+    height: 290px;
+    position: relative;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    a, a:hover {
+      color: black;
+      text-decoration: none;
+    }
+  }
+
+  &__item_img_box {
+    height: 128px;
+    text-align: center;
+    margin: 30px 0 10px;
+  }
+
+  &__external_site_name {
+    color: #9A9A9A;
+  }
+
+  &__item_name {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+  }
+
+  &__item_price {
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+  // 使用しているアイテム/ -------------------------
+
+  &__favorite_btn {
+    &--click {
+      background-color: #D25249 !important;
+      color: white !important;
+    }
+  }
+
+  &__save_item_btn {
+    &--click {
+      background-color: #D25249 !important;
+      color: white !important;
+    }
+  }
+
 }

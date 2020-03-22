@@ -1,5 +1,5 @@
-$('#post_comment__comment_text_<%= @comment.id %>')
+$('#comment__comment_text_<%= @comment.id %>')
   .html('<%= simple_format(h(@comment.comment), {}, sanitize: false, wrapper_tag: "div").gsub(/(\r\n|\n)/,"").html_safe %>');
 
-$('.post_comment__comment_edit_block_<%= @comment.id %>').hide();
-$('.post_comment__comment_display_<%= @comment.id %>').show();
+$('.comment__comment_edit_block_<%= @comment.id %>').hide();
+$('.comment__comment_display_<%= @comment.id %>').show();
