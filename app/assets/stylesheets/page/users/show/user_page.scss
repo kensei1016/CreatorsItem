@@ -1,3 +1,31 @@
 .user_page {
-  
+  background-color: white;
+
+  &__user_name_block {
+    display: flex;
+    margin-bottom: 15px;
+  }
+
+  &__user_name {
+    margin-right: 15px;
+    margin-bottom: 0;
+  }
+
+  &__repute_display {
+    margin-bottom: 15px;
+  }
+
+  &__repute:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  &__em_num {
+    font-style: normal !important;
+    font-size: 1.3em;
+    margin: 0 5px;
+  }
+
+  &__caption {
+    margin-bottom: 50px;
+  }
 }

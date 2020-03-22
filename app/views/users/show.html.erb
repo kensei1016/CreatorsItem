@@ -1,51 +1,70 @@
-<div class="user_page container">
-  <div class="user_page__user_profile_block">
-    <div class="user_page__user_icon">
-      <%= attachment_image_tag @user, :profile_image, :fill, 180, 180, fallback: "module/user_icons/user_no_image_icon.png" %>
-      <% @user.creator_genres.each do |creator_genre| %>
-        <%= attachment_image_tag creator_genre, :genre_icon_image, :fill, 40, 40 %>
-      <% end %>
-    </div>
-    <h3><%= @user.name %></h3>
-    <% if @user.id != current_user.id %>
-      <% if current_user.following?(@user) %>
-        <%= link_to 'フォロー外す', user_relationship_path(@user), method: :delete, class: "btn btn-secondary" %>
-      <% else %>
-        <%= link_to 'フォローする', user_relationship_path(@user), method: :post, class: "btn btn-secondary" %>
-      <% end %>
-    <% end %>
-    <span>フォロワー<%= @user.follower_user.count %></span>
-    <span>参考になった<%= @user.post_favorite_count %></span>
-    
-    <p><%= @user.caption %></p>
-  </div>
+<div class="page_bg">
+  <div class="user_page container">
+    <div class="row justify-content-center p-3">
+      <div class="col-8">
+        <div class="user_page__user_profile_block">
+          <div class="user_icon mt-3 mb-1">
+            <%= attachment_image_tag @user, :profile_image, :fill, 180, 180, fallback: "module/user_icons/user_no_image_icon.png", size:'180x180', class: "user_icon__profile_image" %>
+            <% @user.creator_genres.each do |creator_genre| %>
+              <%= attachment_image_tag creator_genre, :genre_icon_image, :fill, 60, 60, class: "user_icon__genre_images_box" %>
+            <% end %>
+          </div>
+          <div class="user_page__user_name_block">
+            <h3 class="user_page__user_name"><%= @user.name %></h3>
+            <% if @user.id != current_user.id %>
+              <% if current_user.following?(@user) %>
+                <%= link_to user_relationship_path(@user), method: :delete, class: "btn btn-outline-secondary my-primary-btn" do %>
+                  フォロー外す
+                  <i class="fas fa-user-minus"></i>
+                <% end %>
+              <% else %>
+                <%= link_to user_relationship_path(@user), method: :post, class: "btn btn-outline-secondary" do %>
+                  フォローする
+                  <i class="fas fa-user-plus"></i>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
 
-  <nav>
-    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">投稿一覧</a>
-      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">あとで見る</a>
-    </div>
-  </nav>
+          <div class="user_page__repute_display">
+            <span class="user_page__repute">フォロワー<em class="user_page__em_num"><%= @user.follower_user.count %></em></span>
+            <span class="user_page__repute">参考になった<em class="user_page__em_num"><%= @user.post_favorite_count %></em></span>
+          </div>
+          
+          <div class="user_page__caption">
+            <%= simple_format(Rinku.auto_link(@user.caption, :all, 'target="_blank"'), {}, sanitize: false, wrapper_tag: "div") %>
+          </div>
+        </div>
 
-  <div class="tab-content mt-3" id="nav-tabContent">
-    <!-- 投稿一覧 -->
-    <div class="tab-pane active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-      <span><%= @user.work_rooms.count %>件の投稿</span>
-      <div class="user_page__post_all">
-        <%= render partial: "work_rooms/work_room_card_detail", collection: @user.work_rooms, as: "work_room" %>
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">投稿一覧</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">あとで見る</a>
+          </div>
+        </nav>
+
+        <div class="tab-content mt-3" id="nav-tabContent">
+          <!-- 投稿一覧 -->
+          <div class="tab-pane active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <span><%= @work_rooms.count %>件の投稿</span>
+            <div class="user_page__post_all">
+              <%= render partial: "work_rooms/work_room_card_detail", collection: @work_rooms, as: "work_room" %>
+            </div>
+          </div>
+          <!-- 投稿一覧/ -->
+          <!-- あとで見る -->
+          <div class="tab-pane" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <span><%= @save_items.includes([:work_room]).count %>件のアイテム</span>
+            <div class="user_page__save_items">
+              <% @save_items.each do |save_item| %>
+                <%= render partial: "work_rooms/work_room_card_detail", locals: { work_room: save_item.work_room } %>
+              <% end %>
+            </div>
+          </div>
+          <!-- あとで見る/ -->
+          <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">コンタクトの文章です。...</div>
+        </div>
       </div>
     </div>
-    <!-- 投稿一覧/ -->
-    <!-- あとで見る -->
-    <div class="tab-pane" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-      <span><%= @user.work_rooms.count %>件のアイテム</span>
-      <div class="user_page__save_items">
-        <% @user.save_items.each do |save_item| %>
-          <%= render partial: "work_rooms/work_room_card_detail", locals: { work_room: save_item.work_room } %>
-        <% end %>
-      </div>
-    </div>
-    <!-- あとで見る/ -->
-    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">コンタクトの文章です。...</div>
   </div>
 </div>
