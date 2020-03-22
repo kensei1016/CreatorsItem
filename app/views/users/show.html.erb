@@ -36,16 +36,17 @@
           </div>
         </div>
 
+        <!-- ユーザメニューリスト -->
         <nav>
           <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">投稿一覧</a>
-            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">あとで見る</a>
+            <a class="nav-item nav-link active" id="post_list_tab" data-toggle="tab" href="#post_list" role="tab" aria-controls="post_list" aria-selected="true">投稿一覧</a>
+            <a class="nav-item nav-link" id="save_item_tab" data-toggle="tab" href="#save_item" role="tab" aria-controls="nav-profile" aria-selected="false">あとで見る</a>
           </div>
         </nav>
 
         <div class="tab-content mt-3" id="nav-tabContent">
           <!-- 投稿一覧 -->
-          <div class="tab-pane active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+          <div class="tab-pane active" id="post_list" role="tabpanel" aria-labelledby="post_list_tab">
             <span><%= @work_rooms.count %>件の投稿</span>
             <div class="user_page__post_all">
               <%= render partial: "work_rooms/work_room_card_detail", collection: @work_rooms, as: "work_room" %>
@@ -53,7 +54,7 @@
           </div>
           <!-- 投稿一覧/ -->
           <!-- あとで見る -->
-          <div class="tab-pane" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+          <div class="tab-pane" id="save_item" role="tabpanel" aria-labelledby="save_item_tab">
             <span><%= @save_items.includes([:work_room]).count %>件のアイテム</span>
             <div class="user_page__save_items">
               <% @save_items.each do |save_item| %>
@@ -62,8 +63,8 @@
             </div>
           </div>
           <!-- あとで見る/ -->
-          <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">コンタクトの文章です。...</div>
         </div>
+        <!-- ユーザメニューリスト/ -->
       </div>
     </div>
   </div>
