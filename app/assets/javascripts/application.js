@@ -20,15 +20,33 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
+  //ユーザメニュー表示 --------------------------------------
   $(function() {
     $('.header__user-icon').click(function() {
       $('.header__account-menu').toggle();
     })
   });
+  //ユーザメニュー表示/ --------------------------------------
+
+  //ページの上に戻るボタン --------------------------------------
+  var pagetop = $('#to_top');
+  pagetop.hide();
+  // 100px スクロールしたらボタン表示
+  $(window).scroll(function () {
+     if ($(this).scrollTop() > 100) {
+          pagetop.fadeIn();
+     } else {
+          pagetop.fadeOut();
+     }
+  });
+  pagetop.click(function () {
+     $('body, html').animate({ scrollTop: 0 }, 500);
+     return false;
+  });
+  //ページの上に戻るボタン/ --------------------------------------
 });
 
-//アカウントメニューが開いているとき他の場所をクリックすると、
-//メニューを閉じる
+//アカウントメニューが開いているとき他の場所をクリックすると、メニューを閉じる
 $(document).on('click', function(event) {
   if(!$(event.target).closest('.header__user-profile-group').length) {
     $('.header__account-menu').hide();
