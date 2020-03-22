@@ -110,18 +110,28 @@
       <!-- コメント投稿/ -->
     </div>
     <div class="col-4">
-      <!-- 投稿ユーザ情報表示 -->
+      <!-- 投稿ユーザ情報 -->
       <div class="work_room_show__post_user">
-        <div class="work_room_show__user_profile">
-          <%= attachment_image_tag @work_room.user, :profile_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png" %>
-          <% @work_room.user.creator_genres.each do |user_creator_genre| %>
-            <%= attachment_image_tag user_creator_genre, :genre_icon_image, :fill, 20, 20 %>
-          <% end %>
-          <%= @work_room.user.name %>
+        <div class="work_room_show__user_profile_box">
+          <div class="work_room_show__user_icon_box">
+            <%= link_to user_path(@work_room.user) do %>
+              <%= attachment_image_tag @work_room.user, :profile_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png" %>
+            <% end %>
+            <div class="work_room_show__genre_images_box">
+              <% @work_room.user.creator_genres.each do |user_creator_genre| %>
+                <%= attachment_image_tag user_creator_genre, :genre_icon_image, :fill, 20, 20 %>
+              <% end %>
+            </div>
+          </div>
+          <span><%= @work_room.user.name %></span>
         </div>
-        <div class="work_room_show__user_caption">
-          <%= @work_room.caption %>
+        <!-- 投稿ユーザ情報/ -->
+        <!-- 投稿者コメント -->
+        <div class="work_room_show__post_caption">
+          <%= simple_format(Rinku.auto_link(@work_room.caption, :all, 'target="_blank"'), {}, sanitize: false, wrapper_tag: "div") %>
         </div>
+        <!-- 投稿者コメント/ -->
+        <!-- 投稿評価ボタン -->
         <div class="work_room_show__reaction_btns">
           <div class="work_room_show__favorite_btn_block">
             <%= render partial: "favorites/favorite_btn", locals: {work_room: @work_room} %>
@@ -131,7 +141,7 @@
             <%= render partial: "save_items/save_item_btn", locals: {work_room: @work_room} %>
           </div>
       </div>
-      <!-- 投稿ユーザ情報表示/ -->
+      <!-- 投稿評価ボタン/ -->
       <!-- ユーザの他の投稿 -->
       <div class="work_room_show__user_other_posts">
         <h4>ユーザの他の投稿</h4>

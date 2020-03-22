@@ -114,3 +114,5 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 # 楽天API
 gem 'rakuten_web_service'
+# 自動リンク生成
+gem 'rinku'

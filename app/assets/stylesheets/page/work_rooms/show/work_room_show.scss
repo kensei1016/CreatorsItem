@@ -81,6 +81,43 @@
   }
   // 使用しているアイテム/ -------------------------
 
+  // 投稿ユーザプロフィール -------------------------
+  &__user_profile_box {
+    display: flex;
+    align-items: center;
+  }
+
+  &__user_icon_box {
+    position: relative;
+  }
+
+  &__user_icon_box {
+    position: relative;
+  }
+
+  .profile_image {
+    border-radius: 50%;
+    border: 2px solid #d0d0d0;
+  }
+
+  &__genre_images_box {
+    position: absolute;
+    display: flex;
+    bottom: -3px;
+    left: -3px;
+  }
+
+  .genre_icon_image:nth-child(n+2) {
+    margin-left: -15%;
+  }
+  // 投稿ユーザプロフィール/ -------------------------
+
+  // 投稿者コメント -------------------------
+  &__post_caption {
+    margin: 20px 0;
+  }
+  // 投稿者コメント/ -------------------------
+
   &__favorite_btn {
     &--click {
       background-color: #D25249 !important;
