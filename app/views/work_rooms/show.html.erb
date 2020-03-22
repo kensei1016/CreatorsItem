@@ -109,20 +109,20 @@
       <!-- コメント投稿/ -->
     </div>
     <div class="col-4">
-      <!-- 投稿ユーザ情報 -->
       <div class="work_room_show__post_user">
-        <div class="work_room_show__user_profile_box">
-          <div class="work_room_show__user_icon_box">
+        <!-- 投稿ユーザ情報 -->
+        <div class="user_profile">
+          <div class="user_icon">
             <%= link_to user_path(@work_room.user) do %>
-              <%= attachment_image_tag @work_room.user, :profile_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png" %>
+              <%= attachment_image_tag @work_room.user, :profile_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png", class: "user_icon__profile_image" %>
             <% end %>
-            <div class="work_room_show__genre_images_box">
+            <div class="user_icon__genre_images_box">
               <% @work_room.user.creator_genres.each do |user_creator_genre| %>
-                <%= attachment_image_tag user_creator_genre, :genre_icon_image, :fill, 20, 20 %>
+                <%= attachment_image_tag user_creator_genre, :genre_icon_image, :fill, 20, 20, class: "user_icon__genre_icon_image" %>
               <% end %>
             </div>
           </div>
-          <span><%= @work_room.user.name %></span>
+          <span class="user_profile__user_name"><%= @work_room.user.name %></span>
         </div>
         <!-- 投稿ユーザ情報/ -->
         <!-- 投稿者コメント -->
