@@ -47,15 +47,15 @@
         <div class="tab-content mt-3" id="nav-tabContent">
           <!-- 投稿一覧 -->
           <div class="tab-pane active" id="post_list" role="tabpanel" aria-labelledby="post_list_tab">
-            <span><%= @work_rooms.count %>件の投稿</span>
-            <div class="user_page__post_all">
+            <div class="mb-2"><%= @work_rooms.count %>件の投稿</div>
+            <div class="user_page__post_list">
               <%= render partial: "work_rooms/work_room_card_detail", collection: @work_rooms, as: "work_room" %>
             </div>
           </div>
           <!-- 投稿一覧/ -->
           <!-- あとで見る -->
           <div class="tab-pane" id="save_item" role="tabpanel" aria-labelledby="save_item_tab">
-            <span><%= @save_items.includes([:work_room]).count %>件のアイテム</span>
+            <div><%= @save_items.includes([:work_room]).count %>件のアイテム</div>
             <div class="user_page__save_items">
               <% @save_items.each do |save_item| %>
                 <%= render partial: "work_rooms/work_room_card_detail", locals: { work_room: save_item.work_room } %>
