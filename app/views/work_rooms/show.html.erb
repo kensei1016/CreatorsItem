@@ -1,6 +1,5 @@
 <div class="work_room_show container">
   <div class="row">
-
     <div class="work_room_show__breadcrumbs_list">
       <% breadcrumb @work_room %>
       <%= render 'layouts/breadcrumbs' %>
@@ -139,6 +138,7 @@
           <div class="work_room_show__save_item_btn_block">
             <%= render partial: "save_items/save_item_btn", locals: {work_room: @work_room} %>
           </div>
+        </div>
       </div>
       <!-- 投稿評価ボタン/ -->
       <!-- ユーザの他の投稿 -->
@@ -160,9 +160,9 @@
       </div>
       <!-- ユーザの他の投稿/ -->
     </div>
-  </div>
 
-  <!-- ページのトップに戻る -->
-  <%= render partial: "layouts/to_top_btn" %>
-  <!-- ページのトップに戻る/ -->
+    <!-- ページのトップに戻る -->
+    <%= render partial: "layouts/to_top_btn" %>
+    <!-- ページのトップに戻る/ -->
+  </div>
 </div>
