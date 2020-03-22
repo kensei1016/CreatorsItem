@@ -1,10 +1,10 @@
 <% if work_room.save_item_by?(current_user) %>
-  <%= link_to work_room_save_item_path(work_room), method: :delete, remote: true, class: "page-link d-inline-block rounded-pill post_user__save_item_btn--click" do %>
+  <%= link_to work_room_save_item_path(work_room), method: :delete, remote: true, class: "btn btn-outline-secondary rounded-pill work_room_show__save_item_btn--click" do %>
     <span>あとで見る</span>
     <i class="fas fa-folder-plus"></i>
   <% end %>
 <% else %>
-  <%= link_to work_room_save_item_path(work_room), method: :post, remote: true, class: "page-link text-dark d-inline-block rounded-pill post_user__save_item_btn" do %>
+  <%= link_to work_room_save_item_path(work_room), method: :post, remote: true, class: "btn btn-outline-secondary rounded-pill work_room_show__save_item_btn" do %>
     <span>あとで見る</span>
     <i class="fas fa-folder-plus"></i>
   <% end %>

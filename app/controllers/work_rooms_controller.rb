@@ -20,7 +20,7 @@ class WorkRoomsController < ApplicationController
     @page_views = @work_room.impressionist_count
 
     @comment = Comment.new
-    @post_comments = Comment.where(work_room_id: @work_room.id).includes([:user])
+    @post_comments = Comment.where(work_room_id: @work_room.id).includes([:user]).order(created_at: :desc)
   end
 
   def edit
@@ -60,17 +60,15 @@ class WorkRoomsController < ApplicationController
   end
 
   def index_new
-    @work_rooms_new = WorkRoom.all.order(created_at: :desc).page(params[:page])
+    @work_rooms_new = WorkRoom.all.includes([:creator_genre, :user]).order(created_at: :desc).page(params[:page])
   end
 
   def index_recomend
-    @work_rooms_recomend = WorkRoom.all.page(params[:page])
+    @work_rooms_recomend = WorkRoom.all.includes([:creator_genre, :user]).page(params[:page])
   end
 
   def search
     @work_rooms = @q.result(distinct: true).includes([:creator_genre, :user]).page(params[:page]).reverse_order
-
-    render :index
   end
 
   def search_api

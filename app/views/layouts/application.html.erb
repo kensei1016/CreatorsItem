@@ -32,7 +32,9 @@
         <ul class="nav navbar-nav ml-auto">
           <% if user_signed_in? %> 
             <div class="header__user-profile-group">
-              <%= attachment_image_tag current_user, :profile_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png", class: "header__user-icon" %>
+              <div class="user_icon">
+                <%= attachment_image_tag current_user, :profile_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png", class: "header__user-icon user_icon__profile_image" %>
+              </div>
 
               <ul class="header__account-menu">
                 <li class="header__account-menu-item"><%= link_to 'マイページ', mypage_path %></li>

@@ -1,3 +1,16 @@
 <div class="breadcrumbs">
-  <%= breadcrumbs pretext: "You are here:", separator: "&rsaquo;" %>
+  <%#= breadcrumbs separator: " &rsaquo; ", style: :bootstrap %>
+
+  <% breadcrumbs(autoroot: true).tap do |links| %>
+    <% if links.any? %>
+      <% links.each do |link| %>
+        <% unless link.current? %>
+          <%= link_to link.text, link.url %>
+          <span> > </span>
+        <% else %>
+          <span class="current"><%= link.text %></span>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
 </div>

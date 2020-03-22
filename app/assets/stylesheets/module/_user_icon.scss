@@ -1,0 +1,20 @@
+// ユーザアイコン
+.user_icon {
+  position: relative;
+
+  &__profile_image {
+    border-radius: 50%;
+    border: 2px solid #d0d0d0;
+  }
+
+  &__genre_images_box {
+    position: absolute;
+    display: flex;
+    bottom: -3px;
+    left: -3px;
+  }
+
+  &__genre_icon_image:nth-child(n+2) {
+    margin-left: -15%;
+  }
+}

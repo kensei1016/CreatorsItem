@@ -81,11 +81,11 @@ $(document).on('turbolinks:load', function() {
     // スライドショーの変化 ("fade" or "slide")
     transition : 'slide',
     // 変化に係る時間(ミリ秒)
-    speed : 1000,
+    speed : 500,
     // easingの種類
     easing : 'easeOutQuart',
     // ナビゲーションの形("block" or "bubble")
-    navType : 'bubble',
+    navType : 'block',
     // 子要素の種類("div" or "img")
     childrenElementType : 'img',
     // ナビゲーション矢印の表示(trueで表示)
@@ -100,5 +100,5 @@ $(document).on('turbolinks:load', function() {
     hidePrevious : false
   });
 
-  //投稿画像のプレビュー表示 --------------------------------------
+  //投稿画像のプレビュー表示/ --------------------------------------
 });

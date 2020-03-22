@@ -1,2 +1,36 @@
-<h1>WorkRooms#search</h1>
-<p>Find me in app/views/work_rooms/search.html.erb</p>
+<div class="work_rooms container-fruid">
+  <div class="work_rooms__breadcrumbs_list">
+    <% breadcrumb :search %>
+    <%= render 'layouts/breadcrumbs' %>
+  </div>
+  <div class="row">
+    <div class="work_rooms__side_bar col-3 px-5">
+      <h3 class="mt-5 mb-4">ジャンルで絞り込む</h3>
+      <%= render 'layouts/creator_genre_search_list' %>
+
+      <h3 class="mt-5 mb-4">タグで絞り込む</h3>
+      <%= render partial: "layouts/tag_search_box" %>
+    </div>
+    <div class="work_rooms__posts_block col">
+      <h3 class="mt-5 mb-4">
+        <% if params[:q].present? && params[:q][:tags_name_or_caption_or_creator_items_search_word_cont] %>
+          <%= params[:q][:tags_name_or_caption_or_creator_items_search_word_cont] %>の検索結果
+        <% else %>
+          検索結果
+        <% end %>
+      </h3>
+      <div class="top_page__post_items_block">
+        <%= render partial: "work_rooms/work_room_card", collection: @work_rooms, as: "work_room" %>
+      </div>
+
+      <div class="work_rooms__paginate"></div>
+        <div class="row mb-3 justify-content-center">
+          <%= link_to_next_page @work_rooms, '次のページ', class: "btn btn-primary my-primary-btn rounded-pill col-5" %>
+        </div>
+
+        <%= paginate @work_rooms %>
+        <%= page_entries_info @work_rooms, entry_name: ' item ' %>
+      </div>
+    </div>
+  </div>
+</div>

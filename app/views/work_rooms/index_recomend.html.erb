@@ -6,12 +6,10 @@
   <div class="row">
     <div class="work_rooms_recomend__side_bar col-3 px-5">
       <h3 class="mt-5 mb-4">ジャンルで絞り込む</h3>
-      <%= render 'module/creator_genre_search_list' %>
+      <%= render 'layouts/creator_genre_search_list' %>
 
       <h3 class="mt-5 mb-4">タグで絞り込む</h3>
-      <% ActsAsTaggableOn::Tag.most_used.each do |tag| %>
-        <%= link_to tag.name, work_rooms_path(tag_name: tag), class:"page-link text-dark d-inline-block rounded-pill work_rooms_recomend__tag_btn" %>
-      <% end %>
+      <%= render partial: "layouts/tag_search_box" %>
     </div>
     <div class="work_rooms_recomend__posts_block col">
       <h3 class="mt-5 mb-4">おすすめ一覧</h3>

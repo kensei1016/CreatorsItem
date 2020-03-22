@@ -1,0 +1,10 @@
+// ユーザプロフィール
+// - ユーザアイコン＋ユーザ名
+.user_profile {
+  display: flex;
+  align-items: center;
+
+  &__user_name {
+    margin-left: 10px;
+  }
+}
