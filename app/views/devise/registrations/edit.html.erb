@@ -1,40 +1,68 @@
-<div class="user_edit" container-fluid">
-  <div class="row h-100 justify-content-center">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <div class="form-group">
-        <%= f.label "プロフィール画像", class: "control-label" %>
-        <%= f.attachment_field :profile_image, class: "form-control" %>
-        <%= render partial: "layouts/error_message", locals: {resource: resource, attr: :profile_image} %>
-      </div>
+<div class="page_bg">
+  <div class="user_edit container">
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <div class="form-group row align-items-center my-5">
+            <%= f.label "プロフィール画像", class: "col-3 col-form-label" %>
+            <div class="col">
+              <div class="user_edit__image_select_form">
+                <!-- プロフィール画像のプレビュー -->
+                <% if resource.profile_image.present? %>
+                  <%= attachment_image_tag resource, :profile_image, class: "user_edit__img_prev mb-3"  %>
+                <% else %>
+                  <%= image_tag "module/user_icons/user_no_image_icon.png", class: "user_edit__img_prev" %>
+                <% end %>
+                <!-- プロフィール画像のプレビュー/ -->
+                <!-- 画像選択フォーム -->
+                  <%= f.attachment_field :profile_image, class: "form-control-file d-none", id: "user_edit__profile_image" %>
+                  <label class="btn btn-outline-secondary rounded-pill user_edit__profile_img_btn" for="user_edit__profile_image">画像を選択する</label>
+                  <%= render partial: "layouts/error_message", locals: {resource: resource, attr: :profile_image} %>
+                </div>
+                <!-- 画像選択フォーム/ -->
+            </div>
+          </div>
 
-      <div class="form-group">
-        <%= f.label "名前", class: "control-label" %>
-        <%= f.text_field :name, autocomplete: "name", placeholder: "名前", class:"form-control" %>
-        <%= render partial: "layouts/error_message", locals: {resource: resource, attr: :name} %>
-      </div>
+          <div class="form-group row my-5">
+            <%= f.label "名前", class: "col-3 col-form-label" %>
+            <div class="col">
+              <%= f.text_field :name, autocomplete: "name", placeholder: "名前", class:"form-control" %>
+              <%= render partial: "layouts/error_message", locals: {resource: resource, attr: :name} %>
+            </div>
+          </div>
 
-      <div class="form-group">
-        <%= f.label :email, class: "control-label" %>
-        <%= f.email_field :email, placeholder: "メールアドレス", autocomplete: "email", class:"form-control" %>
-        <%= render partial: "layouts/error_message", locals: {resource: resource, attr: :email} %>
-      </div>
+          <div class="form-group row my-5">
+            <%= f.label :email, class: "col-3 col-form-label" %>
+            <div class="col">
+              <%= f.email_field :email, placeholder: "メールアドレス", autocomplete: "email", class:"form-control" %>
+              <%= render partial: "layouts/error_message", locals: {resource: resource, attr: :email} %>
+            </div>
+          </div>
 
-      <div class="form-group">
-        <%= label_tag :creator_other_genre_check , "クリエイタージャンル" %>
-        <%= f.collection_check_boxes(:creator_genre_ids, CreatorGenre.all, :id, :name) do |b| %>
-          <%= b.label { b.check_box + b.text } %>
+          <div class="form-group row my-5">
+            <%= label_tag :creator_other_genre_check , "クリエイタージャンル", class: "col-3" %>
+            <div class="col">
+              <%= f.collection_check_boxes(:creator_genre_ids, CreatorGenre.all, :id, :name) do |b| %>
+                <div class="form-check form-check-inline">
+                  <%= b.label { b.check_box(class: "form-check-input") + b.text } %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="form-group row my-5">
+            <%= f.label "コメント", class: "col-3 col-form-label" %>
+            <div class="col">
+              <%= f.text_area :caption, rows: '5', autocomplete: "name", placeholder: "ここに入力してください...", class:"form-control" %>
+              <%= render partial: "layouts/error_message", locals: {resource: resource, attr: :caption} %>
+            </div>
+          </div>
+
+          <div class="form-group row justify-content-center">
+            <%= f.submit "変更を確定する", class:"btn btn-primary my-primary-btn form-control" %>
+          </div>
         <% end %>
       </div>
-
-      <div class="form-group">
-        <%= f.label "コメント", class: "control-label" %>
-        <%= f.text_area :caption, rows: '5', autocomplete: "name", placeholder: "ここに入力してください...", class:"form-control" %>
-        <%= render partial: "layouts/error_message", locals: {resource: resource, attr: :caption} %>
-      </div>
-
-      <div class="form-group">
-        <%= f.submit "変更を確定する", class:"btn btn-success form-control" %>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
