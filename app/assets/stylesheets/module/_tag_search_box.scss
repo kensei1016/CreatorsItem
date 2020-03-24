@@ -1,0 +1,10 @@
+.tag_search_box {
+  &__tag_btn {
+    margin-bottom: 5px;
+
+    &--click {
+      background-color: #D25249 !important;
+      color: white !important;
+    }
+  }
+}
