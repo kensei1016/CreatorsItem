@@ -1,15 +1,17 @@
 <div class="work_room_card">
   <%= link_to work_room_path(work_room) do %>
-    <%= attachment_image_tag work_room.work_room_images.first, :image, :fill, 200, 200 %>
+    <%= attachment_image_tag work_room.work_room_images.first, :image, fallback: "module/work_room--no_image.icon.png", class: "work_room_card__profile_image" %>
   <% end %>
   <div class="work_room_card__creator_genre_box">
     <%= attachment_image_tag work_room.creator_genre, :genre_icon_image, :fill, 40, 40 %>
   </div>
-  <div class="work_room_card__user_profile_box">
-    <%= link_to user_path(work_room.user) do %>
-      <%= attachment_image_tag work_room.user, :profile_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png", size: "40x40" %>
-      <span><%= work_room.user.name %></span>
-    <% end %>
+  <div class="user_profile ml-1">
+    <div class="user_icon">
+      <%= link_to user_path(work_room.user) do %>
+        <%= attachment_image_tag work_room.user, :profile_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png", size: "40x40", class: "user_icon__profile_image" %>
+        <span class="user_profile__user_name"><%= work_room.user.name %></span>
+      <% end %>
+    </div>
   </div>
   <div class="work_room_card__bottom_contents">
     <span class="work_room_card__favorites mr-2">
