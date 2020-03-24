@@ -28,6 +28,9 @@ class User < ApplicationRecord
     presence: true,
     length: { minimum: 1, maximum:30 }
 
+  validates :caption,
+    length: { maximum:300 }
+
   # 自分の投稿がいいねされた回数
   def post_favorite_count
     work_room_ids = work_rooms.map{|work_room| work_room.id }
