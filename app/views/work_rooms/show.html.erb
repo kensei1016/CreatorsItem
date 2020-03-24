@@ -31,7 +31,7 @@
             <%= @work_room.save_items.count %>
           </span>
           <div class="edit_btns">
-            <%= link_to '投稿を編集する', edit_work_room_path(@work_room), class: "post_edit_btn btn btn-outline-secondary btn-sm" %>
+            <%= link_to '投稿を編集する', edit_work_room_path(@work_room), data: {"turbolinks" => false}, class: "post_edit_btn btn btn-outline-secondary btn-sm" %>
             <%= link_to '投稿を削除する', work_room_path, method: :delete, data: { confirm: '投稿を削除します。本当によろしいですか？'}, class: "post_delete_btn btn btn-outline-secondary btn-sm" %>
           </div>
         </div>
