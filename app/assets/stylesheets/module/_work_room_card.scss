@@ -33,7 +33,9 @@
     font-size: 0.8em;
   }  
 
-  .work_room_image {
-   border-radius: 16px;
+  &__profile_image {
+    width: 200px;
+    height: 200px;
+    border-radius: 16px;
   }
 }
