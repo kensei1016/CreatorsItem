@@ -17,5 +17,10 @@ module CreatorsItem
     # the framework and any gems in your application.
 
     config.time_zone = 'Asia/Tokyo'
+
+    # field_with_errorsを自動生成しない
+    config.action_view.field_error_proc = Proc.new do |html_tag, instance|
+      %Q(#{html_tag}).html_safe
+    end
   end
 end
