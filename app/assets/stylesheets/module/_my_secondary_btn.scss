@@ -1,0 +1,13 @@
+// @import "../mixin/my_btn";
+
+.my_secondary_btn {
+  @include my_btn;
+  color: #6c757d;
+  border-color: #6c757d;
+
+  &:hover {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+}

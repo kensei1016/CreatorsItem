@@ -16,7 +16,7 @@
                 <!-- プロフィール画像のプレビュー/ -->
                 <!-- 画像選択フォーム -->
                   <%= f.attachment_field :profile_image, class: "form-control-file d-none", id: "user_edit__profile_image" %>
-                  <label class="btn btn-outline-secondary rounded-pill user_edit__profile_img_btn" for="user_edit__profile_image">画像を選択する</label>
+                  <label class="my_secondary_btn rounded-pill user_edit__profile_img_btn" for="user_edit__profile_image">画像を選択する</label>
                   <%= render partial: "layouts/error_message", locals: {resource: resource, attr: :profile_image} %>
                 </div>
                 <!-- 画像選択フォーム/ -->
