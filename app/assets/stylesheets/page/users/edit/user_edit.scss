@@ -1,0 +1,30 @@
+// @import "../../../module/user_icon";
+
+.user_edit {
+  background-color: white;
+  padding: 1rem;
+
+  &__image_select_form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__img_prev {
+    @extend .user_icon__profile_image;
+    width: 150px;
+    height: 150px;
+  }
+  
+  &__profile_img_btn {
+    width: 15em;
+  }
+
+  //クリエイタージャンル --------------------------------------
+  &__control_indicator {
+    background-color: #2aa1c0;
+  }
+  //クリエイタージャンル/ --------------------------------------
+}

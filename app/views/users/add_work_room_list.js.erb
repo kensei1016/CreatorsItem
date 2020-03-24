@@ -1,0 +1,3 @@
+$(".user_page__more_work_rooms").empty();
+$(".user_page__post_list").append("<%= j render partial: "work_rooms/work_room_card_detail", collection: @work_rooms_page, as: "work_room" %>")
+$(".user_page__more_work_rooms").append("<%= j render partial: "more_resource_link", locals: { resources: @work_rooms_page } %>");

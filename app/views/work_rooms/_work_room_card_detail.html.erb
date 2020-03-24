@@ -1,16 +1,18 @@
 <div class="work_room_card_detail">
   <div class="work_room_card_detail__left_content">
-    <%= link_to work_room_path(work_room) do %>
-      <%= attachment_image_tag work_room.work_room_images.first, :image, :fill, 200, 200 %>
-    <% end %>
-    <div class="work_room_card_detail__creator_genre_box">
-      <%= attachment_image_tag work_room.creator_genre, :genre_icon_image, :fill, 40, 40 %>
+    <div class="work_room_card_detail__post_image_box">
+      <%= link_to work_room_path(work_room) do %>
+        <%= attachment_image_tag work_room.work_room_images.first, :image, class: "work_room_card_detail__post_image" %>
+      <% end %>
+      <div class="work_room_card_detail__creator_genre_box">
+        <%= attachment_image_tag work_room.creator_genre, :genre_icon_image, class: "work_room_card_detail__genre_icon_image" %>
+      </div>
     </div>
   </div>
 
   <div class="work_room_card_detail__right_content">
     <div class="work_room_card_detail__caption">
-      <p><%= work_room.caption %></p>
+      <%= simple_format( work_room.caption, {}, sanitize: false, wrapper_tag: "div") %>
     </div>
     <div class="work_room_card_detail__bottom_contents">
       <span class="work_room_card_detail__favorites mr-2">
@@ -22,7 +24,7 @@
         <em class="work_room_card_detail__number"><%= work_room.comments.count %></em>
       </span>
       <span class="work_room_card_detail__date">
-        <em class="work_room_card_detail__number"><%= work_room.created_at.strftime('%Y/%m/%d %M:%S') %></em>
+        <em class="work_room_card_detail__number"><%= work_room.created_at.strftime('%Y/%m/%d %H:%M') %></em>
       </span>
     </div>
   </div>

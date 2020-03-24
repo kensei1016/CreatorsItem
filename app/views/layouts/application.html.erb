@@ -17,14 +17,14 @@
       <% end %>
 
       <!-- 検索フォーム -->
-      <div class="header__serch_form_block">
+      <div class="header__search_form_block">
         <%= search_form_for @q, url: search_work_rooms_path, class: "form-inline navbar-form navbar-right" do |f| %>
           <div class="form-group">
             <%= f.label :tags_name_or_caption_or_creator_items_search_word_cont, 'Title', class: 'control-label sr-only' %>
             <%= f.search_field :tags_name_or_caption_or_creator_items_search_word_cont, placeholder: "気になるアイテム、タグで検索", class: 'form-control rounded-pill header__search_form' %>
           </div>
-          <%#= f.submit %>
-          <button type="submit" class="header__search_btn" name="commit"><i class="fas fa-search"></i></button>
+          <%= f.submit class: "d-none" %>
+          <!--<button type="submit" class="header__search_btn" name="commit"><i class="fas fa-search"></i></button>-->
         <% end %>
       </div>
       <!-- 検索フォーム/ -->
@@ -34,12 +34,12 @@
           <% if user_signed_in? %> 
             <div class="header__user-profile-group">
               <div class="user_icon">
-                <%= attachment_image_tag current_user, :profile_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png", class: "header__user-icon user_icon__profile_image" %>
+                <%= attachment_image_tag current_user, :profile_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png", size:'40x40', class: "header__user-icon user_icon__profile_image" %>
               </div>
 
               <ul class="header__account-menu">
                 <li class="header__account-menu-item"><%= link_to 'マイページ', mypage_path %></li>
-                <li class="header__account-menu-item"><%= link_to 'ユーザ情報の編集', edit_user_registration_path %></li>
+                <li class="header__account-menu-item"><%= link_to 'プロフィールを編集する', edit_user_registration_path %></li>
                 <li class="header__account-menu-item"><%= link_to '投稿する', new_work_room_path, data: {"turbolinks" => false} %></li>
                 <li class="header__account-menu-item"><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
               </ul>
