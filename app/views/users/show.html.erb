@@ -5,9 +5,11 @@
         <div class="user_page__user_profile_block">
           <div class="user_icon mt-3 mb-1">
             <%= attachment_image_tag @user, :profile_image, :fill, 180, 180, fallback: "module/user_icons/user_no_image_icon.png", size:'180x180', class: "user_icon__profile_image" %>
-            <% @user.creator_genres.each do |creator_genre| %>
-              <%= attachment_image_tag creator_genre, :genre_icon_image, :fill, 60, 60, class: "user_icon__genre_images_box" %>
-            <% end %>
+            <div class="user_icon__genre_images_box">
+              <% @user.creator_genres.each do |creator_genre| %>
+                <%= attachment_image_tag creator_genre, :genre_icon_image, :fill, 60, 60, class: "user_icon__genre_icon_image" %>
+              <% end %>
+            </div>
           </div>
           <div class="user_page__user_name_block">
             <h3 class="user_page__user_name"><%= @user.name %></h3>
