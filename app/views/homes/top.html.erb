@@ -1,6 +1,6 @@
 <div class="top_page container-fruid">
   <div class="row">
-    <!-- headline -->
+    <!-- ヘッドライン -->
     <div class="top_page__headline">
       <div class="top_page__headline_message_block">
         <p class="top_page__headline_main_message">クリエイターの作業部屋をノゾいてみよう</p>
@@ -11,45 +11,47 @@
         </p>
       </div>
     </div>
-    <!-- headline/ -->
-    <!-- sidebar -->
+    <!-- ヘッドライン/ -->
+    <!-- サイドバー -->
     <div class="top_page__side_bar col-3 px-5">
       <h3 class="mt-5 mb-4">探す</h3>
       <%= render 'layouts/creator_genre_search_list' %>
     </div>
-    <!-- sidebar/ -->
-    <!-- post_items -->
+    <!-- サイドバー/ -->
+    <!-- 投稿 -->
     <div class="top_page__posts_block col">
-      <!-- post_items(おすすめ) -->
+      <!-- おすすめ -->
       <div class="top_page__posts_reccomend">
         <h3 class="mt-5 mb-4">おすすめ</h3>
 
         <div class="top_page__post_items_block">
           <%= render partial: "work_rooms/work_room_card", collection: @work_rooms_recomend, as: "work_room" %>
         </div>
-        <div class="row mb-3 justify-content-center">
-          <%= link_to 'おすすめをもっと見る', recommend_items_work_rooms_path, class: "btn btn-primary my-primary-btn rounded-pill col-5" %>
+        <div class="row my-3 justify-content-center">
+          <%= link_to 'おすすめをもっと見る', recommend_items_work_rooms_path, class: "my_primary_btn rounded-pill col-5" %>
         </div>
       </div>
-      <!-- post_items(おすすめ)/ -->
+      <!-- おすすめ/ -->
 
-      <!-- post_items(新着) -->
+      <!-- 新着 -->
       <div class="top_page__posts_new">
         <h3 class="mt-5 mb-4">新着</h3>
 
         <div class="top_page__post_items_block">
           <%= render partial: "work_rooms/work_room_card", collection: @work_rooms_new, as: "work_room" %>
         </div>
-        <div class="row mb-3 justify-content-center">
-          <%= link_to '新着をもっと見る', new_items_work_rooms_path, class: "btn btn-primary my-primary-btn rounded-pill col-5" %>
+        <div class="row my-3 justify-content-center">
+          <%= link_to '新着をもっと見る', new_items_work_rooms_path, class: "my_primary_btn rounded-pill col-5" %>
         </div>
       </div>
-      <!-- post_items(新着)/ -->
+      <!-- 新着/ -->
     </div>
-    <!-- post_items/ -->
+    <!-- 投稿/ -->
   </div>
 
+  <!-- アバウト -->
   <div id="top_page__about" class="pt-3">
     <%= render partial: 'about', locals: {creator_genres: @creator_genres} %>
   </div>
+  <!-- アバウト/ -->
 </div>
