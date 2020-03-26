@@ -1,4 +1,5 @@
 class WorkRoomsController < ApplicationController
+
   def new
     @work_room = WorkRoom.new
   end
@@ -15,9 +16,8 @@ class WorkRoomsController < ApplicationController
   def show
     @work_room = WorkRoom.find(params[:id])
     
-    # impressionist(@work_room, nil, :unique => [:session_hash])
     impressionist(@work_room)
-    @page_views = @work_room.impressionist_count
+    @page_views = @work_room.impressionist_count(:filter=>:session_hash)
 
     @comment = Comment.new
     @post_comments = Comment.where(work_room_id: @work_room.id).includes([:user]).order(created_at: :desc)

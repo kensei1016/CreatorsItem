@@ -1,0 +1,20 @@
+.creator_item {
+  &__item_img {
+    width: 170px;
+    height: 170px;
+  }
+
+  &__item_price {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  &__external_site_link {
+    width: 100%
+  }
+
+  &__item_use_work_rooms {
+    background-color: #E5E5E5;
+    padding: 15px;
+  }
+}

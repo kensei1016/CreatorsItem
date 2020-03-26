@@ -1,22 +1,26 @@
 <div class="creator_item container">
-  <div class="row">
-    <div class="col-3">
-      <img src="<%= @creator_item.item_image %>">
+  <div class="row py-5">
+    <div class="col-3 text-center">
+      <img src="<%= @creator_item.item_image || image_url("module/work_room--no_image.icon") %>", class="creator_item__item_img">
     </div>
     <div class="col">
       <div class="creator_item__item_info">
-        <div><%= @creator_item.item_name %></div>
-        <div>販売サイト:<%= @creator_item.external_site_name %></div>
-        <div>¥<%= @creator_item.item_price %></div>
+        <h2><%= @creator_item.item_name || "－" %></h2>
+        <div class="creator_item__item_name"><%= @creator_item.external_site_name || "－" %></div>
+        <div class="creator_item__item_price"><%= @creator_item.item_price ? "¥#{@creator_item.item_price}" : "¥ -" %></div>
       </div>
-      <div class="creator_item__external_site_btns">
-        <a href="<%= @creator_item.item_url %>" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">販売サイトへ</a>
+      <div class="creator_item__external_site_btns row mt-5">
+        <div class="col-4">
+          <% if @creator_item.item_url.present? %>
+            <a href="<%= @creator_item.item_url %>" target="_blank" rel="noopener noreferrer" class="my_primary_btn creator_item__external_site_link">販売サイトへ</a>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="creator_item__item_use_work_rooms">
-    <h2><%= @creator_item.item_name %>が使われている作業部屋</h2>
-    <%= render partial: "work_rooms/work_room_card", collection: @creator_item.item_use_work_rooms, as: "work_room" %>
+    <h3 class="py-3">このアイテムが使われている作業部屋</h3>
+    <%= render partial: "work_rooms/work_rooms", locals: {work_rooms: @item_use_work_rooms} %>
   </div>
 </div>

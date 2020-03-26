@@ -1,12 +1,11 @@
 // ユーザアイコン
 .user_icon {
-  width: 90%;
-  overflow: hidden;
   position: relative;
 
   &__wrapper {
     display: flex;
     align-items: center;
+    padding-right: 10px;
   }
 
   & a, a:hover {
