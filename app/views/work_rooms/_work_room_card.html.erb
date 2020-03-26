@@ -5,12 +5,12 @@
   <div class="work_room_card__creator_genre_box">
     <%= attachment_image_tag work_room.creator_genre, :genre_icon_image, :fill, 40, 40 %>
   </div>
-  <div class="user_profile ml-1">
-    <div class="user_icon">
+  <div class="user_profile ml-1 pr-2">
+    <div class="user_icon w-100 overflow-hidden">
       <%= link_to user_path(work_room.user) do %>
         <div class="user_icon__wrapper">
           <%= attachment_image_tag work_room.user, :profile_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png", size: "40x40", class: "user_icon__profile_image" %>
-          <span class="user_profile__user_name"><%= work_room.user.name %></span>
+          <div><span class="user_profile__user_name"><%= work_room.user.name %></span></div>
         </div>
       <% end %>
     </div>

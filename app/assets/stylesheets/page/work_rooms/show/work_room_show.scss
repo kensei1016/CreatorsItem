@@ -1,9 +1,24 @@
 .work_room_show {
+  background-color: white;
+  padding: 30px !important;
+
   // ヘッダー -------------------------
   &__header {
     width: 100%;
   }
+
+  &__title {
+    background: #F3F3F3;
+    padding: 10px;
+    margin: 0 -15px 20px;
+  }
   // ヘッダー/ -------------------------
+
+  // 投稿への評価・タグ -------------------------
+  &__edit_btns {
+    display: inline-block;
+  }
+  // 投稿への評価・タグ/ -------------------------
 
   // 投稿画像表示 -------------------------
   &__operation_btns {
