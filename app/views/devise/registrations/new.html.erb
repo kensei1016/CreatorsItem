@@ -1,9 +1,9 @@
-<div class="sign-up container-fluid">
+<div class="contents_center container-fluid">
   <div class="row h-100 justify-content-center align-items-center">
-    <div class="sign-up__contents col-5 p-5 shadow">
-      <div class="sign-up__header mb-5">
+    <div class="contents_center__contents p-5 shadow">
+      <div class="contents_center__header mb-5">
         <h2><%= image_tag "module/header_logo.svg", height: '30' %></h2>
-        <p>クリエイターのアイテムをノゾいちゃおう</p>
+        <p>クリエイターの部屋をノゾいちゃおう</p>
       </div>
 
       <h3 class="text-center mb-3">サインアップ</h3>
@@ -34,14 +34,12 @@
         </div>
 
         <div class="form-group">
-          <p class="mb-0">あなたは何のクリエイターですか？（複数選択可）</p>
+          <p class="mb-0">あなたはどのクリエイターですか？（複数選択可）</p>
           <%= f.collection_check_boxes(:creator_genres, CreatorGenre.all, :id, :name) do |b| %>
-            <%= b.label { b.check_box + b.text } %>
+            <div class="form-check form-check-inline">
+              <%= b.label { b.check_box(class: "form-check-input") + b.text } %>
+            </div>
           <% end %>
-          <br/>
-          <%= check_box_tag :creator_other_genre_check %>
-          <%= label_tag :creator_other_genre_check , "その他" %>
-          <%= text_field_tag :creator_other_genre , "", placeholder: "ここに入力" %>
         </div>
 
         <div class="form-group">

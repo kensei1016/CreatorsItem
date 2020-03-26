@@ -1,14 +1,21 @@
-<div class="sign-in container-fluid">
+<div class="contents_center container-fluid">
   <div class="row h-100 justify-content-center align-items-center">
-    <div class="sign-in__contents col-5 p-5 shadow">
-      <div class="sign-in__header mb-5">
+    <div class="contents_center__contents p-5 shadow">
+      <div class="contents_center__header mb-5">
         <h2><%= image_tag "module/header_logo.svg", height: '30' %></h2>
-        <p>クリエイターのアイテムをノゾいちゃおう</p>
+        <p>クリエイターの部屋をノゾいちゃおう</p>
       </div>
 
       <h3 class="text-center mb-3">ログイン</h3>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="col-xs-9 col-xs-offset-3">
+          <%# エラーメッセージ(login時はなぜかflashに入ってくる) %>
+          <%- flash.each do |name, msg| -%>
+            <%= content_tag :p, msg, id: "flash_#{name}", class:"error_message" if msg.is_a?(String) %>
+          <%- end -%>
+        </div>
+
         <div class="form-group">
           <%= f.label :email, class: "control-label sr-only" %>
           <%= f.email_field :email, placeholder: "メールアドレス", autocomplete: "email", class:"form-control" %>
