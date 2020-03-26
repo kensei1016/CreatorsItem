@@ -26,4 +26,8 @@ class WorkRoom < ApplicationRecord
     # この投稿のいいねにユーザが含まれているかチェック
     save_items.any? {|save_item| save_item.user_id == user.id}
   end
+
+  def favorite_count
+    favorites.count
+  end
 end
