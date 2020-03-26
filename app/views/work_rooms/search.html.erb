@@ -1,17 +1,17 @@
-<div class="work_rooms container-fruid">
+<div class="search container-fruid">
   <div class="breadcrumbs_list">
     <% breadcrumb :search %>
     <%= render 'layouts/breadcrumbs' %>
   </div>
   <div class="row">
-    <div class="work_rooms__side_bar col-3 px-5">
+    <div class="search__side_bar col-3 px-5">
       <h3 class="mt-5 mb-4">ジャンルで絞り込む</h3>
       <%= render 'layouts/creator_genre_search_list' %>
 
       <h3 class="mt-5 mb-4">タグで絞り込む</h3>
       <%= render partial: "layouts/tag_search_box" %>
     </div>
-    <div class="work_rooms__posts_block col">
+    <div class="search__posts_block col">
       <h3 class="mt-5 mb-4">
         <% if params[:q].present? && params[:q][:tags_name_or_caption_or_creator_items_search_word_cont] %>
           「<%= params[:q][:tags_name_or_caption_or_creator_items_search_word_cont] %>」の検索結果
