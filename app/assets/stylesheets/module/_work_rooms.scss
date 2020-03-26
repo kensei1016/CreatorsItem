@@ -1,12 +1,4 @@
 .work_rooms {
-  &__post_items_block {
-    padding: 0 40px;
-  }
-
-  &__post_items {
-    display: flex;
-    flex-wrap: wrap;
-  }
 
   // ページネーション(kaminari)のスタイル上書き
   &__paginate {

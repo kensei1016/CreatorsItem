@@ -28,10 +28,7 @@
       <!-- おすすめ -->
       <div class="top_page__posts_reccomend">
         <h3 class="mt-5 mb-4">おすすめ</h3>
-
-        <div class="top_page__post_items_block">
-          <%= render partial: "work_rooms/work_room_card", collection: @work_rooms_recomend, as: "work_room" %>
-        </div>
+        <%= render partial: "work_rooms/post_items_block", locals: {work_rooms: @work_rooms_recomend} %>
         <div class="row my-3 justify-content-center">
           <%= link_to 'おすすめをもっと見る', recommend_items_work_rooms_path, class: "my_primary_btn rounded-pill col-5" %>
         </div>
@@ -41,10 +38,7 @@
       <!-- 新着 -->
       <div class="top_page__posts_new">
         <h3 class="mt-5 mb-4">新着</h3>
-
-        <div class="top_page__post_items_block">
-          <%= render partial: "work_rooms/work_room_card", collection: @work_rooms_new, as: "work_room" %>
-        </div>
+        <%= render partial: "work_rooms/post_items_block", locals: {work_rooms: @work_rooms_new} %>
         <div class="row my-3 justify-content-center">
           <%= link_to '新着をもっと見る', new_items_work_rooms_path, class: "my_primary_btn rounded-pill col-5" %>
         </div>
@@ -61,6 +55,6 @@
   <!-- アバウト/ -->
   
   <!-- ページのトップに戻る -->
-    <%= render partial: "layouts/to_top_btn" %>
-    <!-- ページのトップに戻る/ -->
+  <%= render partial: "layouts/to_top_btn" %>
+  <!-- ページのトップに戻る/ -->
 </div>
