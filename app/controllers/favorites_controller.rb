@@ -1,4 +1,6 @@
 class FavoritesController < ApplicationController
+  before_action :authenticate_user!
+  
   def create
     @work_room = WorkRoom.find(params[:work_room_id])
     favorite = current_user.favorites.build(work_room_id: @work_room.id)
