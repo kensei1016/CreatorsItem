@@ -6,7 +6,7 @@
       <% links.each do |link| %>
         <% unless link.current? %>
           <%= link_to link.text, link.url %>
-          <span> > </span>
+          <span> <i class="fas fa-chevron-right mx-2"></i> </span>
         <% else %>
           <span class="current"><%= link.text %></span>
         <% end %>

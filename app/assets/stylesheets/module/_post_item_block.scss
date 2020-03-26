@@ -1,0 +1,9 @@
+.post_items_block {
+  padding: 0 40px;
+
+  &__post_items {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+

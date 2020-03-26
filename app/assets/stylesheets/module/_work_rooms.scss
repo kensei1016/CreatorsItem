@@ -1,0 +1,16 @@
+.work_rooms {
+
+  // ページネーション(kaminari)のスタイル上書き
+  &__paginate {
+    & .active {
+      a {
+        background-color: $color--primary !important;
+        border: none;
+      }
+    }
+
+    & .page-link, .page-link:hover {
+      color: #707070;
+    }
+  }
+}

@@ -63,6 +63,12 @@
   &__post_items_block {
     display: flex;
     flex-wrap: wrap;
-  }  
+    padding: 0 40px;
+  }
+
+  &__post_items {
+    display: flex;
+    flex-wrap: wrap;
+  }
   // 投稿/ ----------------------
 }

@@ -55,7 +55,7 @@ class WorkRoomsController < ApplicationController
       @work_rooms = @work_rooms.tagged_with(@tag_name)
     end
     
-    @work_rooms = @work_rooms.page(params[:page])
+    @work_rooms = @work_rooms.includes([:creator_genre, :user]).page(params[:page])
     
   end
 

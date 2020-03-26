@@ -1,5 +1,5 @@
 <div class="work_rooms_recomend container-fruid">
-  <div class="work_rooms_recomend__breadcrumbs_list">
+  <div class="breadcrumbs_list">
     <% breadcrumb :recommend_items %>
     <%= render 'layouts/breadcrumbs' %>
   </div>
@@ -13,18 +13,7 @@
     </div>
     <div class="work_rooms_recomend__posts_block col">
       <h3 class="mt-5 mb-4">おすすめ一覧</h3>
-      <div class="top_page__post_items_block">
-        <%= render partial: "work_rooms/work_room_card", collection: @work_rooms_recomend, as: "work_room" %>
-      </div>
-
-      <div class="work_rooms_recomend__paginate"></div>
-        <div class="row mb-3 justify-content-center">
-          <%= link_to_next_page @work_rooms_recomend, '次のページ', class: "btn btn-primary my-primary-btn rounded-pill col-5" %>
-        </div>
-
-        <%= paginate @work_rooms_recomend %>
-        <%= page_entries_info @work_rooms_recomend, entry_name: ' item ' %>
-      </div>
+      <%= render partial: "work_rooms", locals: {work_rooms: @work_rooms_recomend} %>
     </div>
   </div>
 </div>
