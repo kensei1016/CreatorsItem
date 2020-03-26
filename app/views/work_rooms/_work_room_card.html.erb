@@ -8,8 +8,10 @@
   <div class="user_profile ml-1">
     <div class="user_icon">
       <%= link_to user_path(work_room.user) do %>
-        <%= attachment_image_tag work_room.user, :profile_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png", size: "40x40", class: "user_icon__profile_image" %>
-        <span class="user_profile__user_name"><%= work_room.user.name %></span>
+        <div class="user_icon__wrapper">
+          <%= attachment_image_tag work_room.user, :profile_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png", size: "40x40", class: "user_icon__profile_image" %>
+          <span class="user_profile__user_name"><%= work_room.user.name %></span>
+        </div>
       <% end %>
     </div>
   </div>
