@@ -1,11 +1,12 @@
-.sign-in {
+.contents_center {
   background-image: image-url('signin_signout/page_bg.jpeg');
   background-size: cover;
   background-position: center;
-  height: 60vw;
+  height: 87vh;
 
   &__contents {
     background-color: #E8E8E8;
+    width: 500px;
   }
 
   &__header {

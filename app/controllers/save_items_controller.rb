@@ -1,4 +1,6 @@
 class SaveItemsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @work_room = WorkRoom.find(params[:work_room_id])
     save_item = current_user.save_items.build(work_room_id: @work_room.id)

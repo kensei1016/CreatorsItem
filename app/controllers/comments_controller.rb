@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @work_room = WorkRoom.find(params[:work_room_id])
     @comment = current_user.comments.build(comment_params)
