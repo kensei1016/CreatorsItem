@@ -37,6 +37,7 @@
   &__post_items {
     display: flex;
     padding-top: 10px;
+    margin-bottom: 40px;
   }
 
   &__creator_item_thumbnail {
@@ -46,7 +47,6 @@
     height: 290px;
     position: relative;
     margin-right: 10px;
-    margin-bottom: 10px;
     padding: 5px;
     a, a:hover {
       color: black;
@@ -55,9 +55,13 @@
   }
 
   &__item_img_box {
+    width: 128px;
     height: 128px;
     text-align: center;
-    margin: 30px 0 10px;
+    margin: 30px auto 10px;
+    & img {
+      height: 128px;
+    }
   }
 
   &__external_site_name {
@@ -89,19 +93,26 @@
     margin-bottom: 40px;
   }
 
-  &__favorite_btn {
+  %__favorite_btn {
     margin-right: 10px;
-    &--click {
-      margin-right: 10px;
-      background-color: #D25249 !important;
-      color: white !important;
-    }
+  }
+
+  &__favorite_btn {
+    @extend %__favorite_btn;
+  }
+
+  &__favorite_btn--click {
+    @extend %__favorite_btn;
+    background-color: #D25249 !important;
+    color: white !important;
+    border: none !important;
   }
 
   &__save_item_btn {
     &--click {
       background-color: #D25249 !important;
       color: white !important;
+      border: none !important;
     }
   }
   // 投稿評価ボタン/ -------------------------

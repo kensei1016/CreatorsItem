@@ -53,6 +53,7 @@
         </div>
         <!-- 投稿画像/ -->
       </div>
+      <!-- 使用しているアイテム -->
       <div class="work_room_show__post_item_block">
         <h4 class="work_room_show__post_item_title">使用しているアイテム</h4>
         <div class="work_room_show__post_items">
@@ -60,22 +61,23 @@
             <div class="work_room_show__creator_item_thumbnail">
               <%= link_to creator_item_path(creator_item) do %>
                 <div class="work_room_show__item_img_box">
-                  <img src="<%= creator_item.item_image %>">
+                  <img src="<%= creator_item.item_image || image_url("module/work_room--no_image.icon") %>">
                 </div>
                 <span class="work_room_show__external_site_name">
-                  <%= creator_item.external_site_name %>
+                  <%= creator_item.external_site_name || "－" %>
                 </span>
                 <span class="work_room_show__item_name">
-                  <%= creator_item.item_name %>
+                  <%= creator_item.item_name || "－" %>
                 </span>
                 <span class="work_room_show__item_price">
-                  ¥<%= creator_item.item_price %>
+                  <%= creator_item.item_price ? "¥#{creator_item.item_price}" : "¥ -" %>
                 </span>
               <% end %>
             </div>
           <% end %>
         </div>
       </div>
+      <!-- 使用しているアイテム/ -->
       <!-- 投稿画像表示/ -->
       <!-- コメント投稿 -->
       <div class="work_room_show__post_comment">
