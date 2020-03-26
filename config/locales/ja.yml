@@ -170,9 +170,9 @@ ja:
     page_entries_info:
       one_page:
         display_entries:
-          zero: "%{entry_name} が見つかりません。"
-          one: "Displaying <b>1</b> %{entry_name}"
-          other: "Displaying <b>all %{count}</b> %{entry_name}"
+          zero: "%{entry_name}がありません"
+          one: "<b>1</b>件の%{entry_name}を表示しています"
+          other: "<b>%{count}</b>件の%{entry_name}を表示しています"
       more_pages:
         display_entries: "<b>%{first}&nbsp;-&nbsp;%{last}</b>番目の%{entry_name}（全<b>%{total}</b>件）"
   number:
