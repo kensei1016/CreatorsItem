@@ -19,13 +19,14 @@ class CreatorItem < ApplicationRecord
   end
 
   def item_price
-    @search_result_item['itemPrice'] unless @search_result_item.nil?
+    @search_result_item['itemPrice'].to_s(:delimited) unless @search_result_item.nil?
   end
 
   # アイテムを使用した投稿を全て返す
   def item_use_work_rooms
-    @same_creator_items = CreatorItem.where("search_word LIKE ?", "%#{search_word}%")
-    @same_creator_items.map(&:work_room)
+    return WorkRoom.none if search_word.nil?
+    same_creator_items = CreatorItem.where("search_word LIKE ?", "%#{search_word}%")
+    WorkRoom.where(id: same_creator_items.pluck(:work_room_id))
   end
 
 end

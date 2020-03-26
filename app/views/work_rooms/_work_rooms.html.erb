@@ -1,7 +1,7 @@
 <div class="work_rooms">
   <p class="pl-4"><%= page_entries_info work_rooms, entry_name: '投稿' %></p>
   
-  <%= render partial: "post_items_block", locals: {work_rooms: work_rooms} %>
+  <%= render partial: "work_rooms/post_items_block", locals: {work_rooms: work_rooms} %>
 
   <div class="row mb-3 justify-content-center work_rooms__paginate">
     <%= paginate work_rooms %>
