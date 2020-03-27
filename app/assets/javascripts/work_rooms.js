@@ -1,19 +1,32 @@
 $(document).on('turbolinks:load', function() {
   //作業部屋の写真投稿 --------------------------------------
-  $('.custom-file-input').on('change', handleFileSelect);
+  $('.custom-file-input').on('change', fileSelectHandler);
 
-  //ファイル選択されると実行
-  function handleFileSelect(evt) {
+
+  // TODO: バリデーションエラー時のリダイレクションで、選んでいる画像をプレビューする
+  // if (document.getElementById("customfile") != null) {
+  //   filesShowPreview($('#customfile').prop('files'));
+  // }
+
+
+  //ファイル選択のイベントハンドラ
+  function fileSelectHandler(evt) {
     $('#preview').remove();// 繰り返し実行時の処理
     $(this).parents('.input-group').after('<div id="preview"></div>');
     var files = evt.target.files;
+
+    filesShowPreview(files)
+  }    
+
+  //画像ファイルをプレビュー表示する
+  function filesShowPreview(files) {
     for (var i = 0, f; f = files[i]; i++) {
       var reader = new FileReader();
       //ファイルが正常に読み込まれた場合のcallbackを設定
       reader.onload = (function(theFile) {
         return function(e) {
           if (theFile.type.match('image.*')) {
-            // 画像では画像のプレビューとファイル名の表示
+            // 画像のプレビュー表示
             var $html = ['<div class="work_room_post__img-thumbnail-block d-inline-block mr-2 mt-2">',
                         '<img class="work_room_post__img-remove-btn" src="', image_path('module/cross_icon.png') ,'" />',
                         '<img class="work_room_post__img-thumbnail" src="',e.target.result,'" title="', escape(theFile.name), '" /></div>'].join('');
@@ -23,7 +36,7 @@ $(document).on('turbolinks:load', function() {
           }
           $('#preview').append($html);
 
-          //ファイルの取消
+          //ファイルの取消イベントハンドラ設定
           $('.work_room_post__img-remove-btn').click(function(){
             $('#preview').remove();
             $('.custom-file-input').val('');
@@ -32,7 +45,7 @@ $(document).on('turbolinks:load', function() {
       })(f);
 
       reader.readAsDataURL(f);
-    }    
+    }
   }
   //作業部屋の写真投稿/ --------------------------------------
 

@@ -1,13 +1,15 @@
 // @import "../mixin/my_btn";
+%__my_secondary_btn {
+  @include my_btn;
+  color: white !important;
+  background-color: $color-creatorsitem--blue !important;
+}
 
 .my_secondary_btn {
-  @include my_btn;
-  color: #6c757d;
-  border-color: #6c757d;
+  @extend %__my_secondary_btn;
 
   &:hover {
-    color: #fff;
-    background-color: #6c757d;
-    border-color: #6c757d;
+    @extend %__my_secondary_btn;
+    opacity: 0.8;
   }
 }

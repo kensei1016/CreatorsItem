@@ -9,7 +9,7 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       user: 会員
-      order: 注文
+      work_room: 作業部屋
     attributes:
       user:
         name: 名前
@@ -18,10 +18,10 @@ ja:
         passwor_confirmation: パスワード（確認）
         created_at: 登録日時
         updated_at: 更新日時
-      order:
-        zip_code: 郵便番号
-        delivery_address: 配送先住所
-        delivery_name: 宛名
+      work_room:
+        work_room_images: 写真
+        creator_genre: クリエイタージャンル
+        caption: 投稿者コメント
   views:
     pagination:
       first: "&laquo; First"

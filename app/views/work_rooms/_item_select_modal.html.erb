@@ -18,16 +18,15 @@
             <%= label_tag '検索サイト' %>
             <%= f.radio_button :search_site_name, "楽天", checked: true %>
             <%= f.label(:search_site_name, "楽天") %>
-            <%= f.radio_button :search_site_name, "サウンドハウス" %>
-            <%= f.label(:search_site_name, "サウンドハウス") %>
+            <%#= f.radio_button :search_site_name, "サウンドハウス" %>
+            <%#= f.label(:search_site_name, "サウンドハウス") %>
           </div>
 
-          <%= f.submit '検索', class:"btn btn-primary w-100" %>
+          <%= f.submit '検索', class:"my_secondary_btn w-100" %>
         <% end %>
 
         <div class="work_room_post__search_result">
         </div>
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">選択を完了する</button>
