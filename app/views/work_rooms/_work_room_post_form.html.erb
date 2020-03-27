@@ -3,6 +3,7 @@
   <div class="work_room_post__image_post">
     <h4>写真を投稿する</h4>
     <p>ファイルフォーマット：JPEG,PNG<br>５枚までアップロード可能です。</p>
+    <%= render partial: "layouts/error_message", locals: {resource: work_room, attr: :work_room_images} %>
     <div class="form-group">
       <div id="file" class="input-group">
         <label class="my_secondary_btn form-control" for="customfile">ファイルを選択</label>
@@ -29,7 +30,12 @@
   <!-- クリエイタージャンル -->
   <div class="work_room_post__creator_genre_post">
     <h4>クリエイタージャンル</h4>
-    <p>この投稿はどのジャンルのものですか？</p>
+    <p>
+      この投稿はどのジャンルのものですか？<br>
+      （どれか１つを選択してください）
+    </p>
+
+    <div><%= render partial: "layouts/error_message", locals: {resource: work_room, attr: :creator_genre} %></div>
 
     <%= f.collection_radio_buttons :creator_genre_id, CreatorGenre.all, :id, :name do |b| %>
       <div class="work_room_post__creator-genre-block mr-3 mb-3">
@@ -49,9 +55,9 @@
     <div class="work_room_post__tag_post_description mb-3" >
       <p>
         （例）音楽の場合<br>
-　      ・創作物のジャンル → JPOP, HipHop など<br>
-　      ・パソコンのOS → Windows, Mac など<br>
-      　・アイテムのメーカー → YAMAHA, Roland など<br>
+        　・やっていること → バンド, DTM, オーケストラ など<br>
+        　・創作物のジャンル → JPOP, HipHop など<br>
+        　・その他自由に → 初心者orプロ向け, 100均, 拡散希望 など
       </p>
     </div>
     <div class="work_room_post__tag_block">
@@ -66,6 +72,7 @@
       最後にこの投稿についてのコメントを200文字以内で投稿してください。<br>
       （例）追加したアイテム以外の情報とか...<br>
     </p>
+    <%= render partial: "layouts/error_message", locals: {resource: work_room, attr: :caption} %>
     <div class="form-group form-row">
       <%= f.text_area :caption, rows: '5', class: "form-control", placeholder: "私はこんなアイテムを使ってます"%>
     </div>
