@@ -1,10 +1,9 @@
 .work_rooms {
-
   // ページネーション(kaminari)のスタイル上書き
   &__paginate {
     & .active {
       a {
-        background-color: $color--primary !important;
+        background-color: $color-creatorsitem--red !important;
         border: none;
       }
     }

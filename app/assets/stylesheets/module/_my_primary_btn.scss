@@ -1,8 +1,16 @@
 // @import "../mixin/my_btn";
 
-.my_primary_btn {
+%__my_primary_btn {
   @include my_btn;
   color: white !important;
-  background-color: $color--primary !important;
-  border-color: $color--primary !important;
+  background-color: $color-creatorsitem--red !important;
+}
+
+.my_primary_btn {
+  @extend %__my_primary_btn;
+
+  &:hover {
+    @extend %__my_primary_btn;
+    opacity: 0.8;
+  }
 }

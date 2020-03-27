@@ -5,7 +5,7 @@
     <p>ファイルフォーマット：JPEG,PNG<br>５枚までアップロード可能です。</p>
     <div class="form-group">
       <div id="file" class="input-group">
-        <label class="btn btn-primary form-control" for="customfile">ファイルを選択</label>
+        <label class="my_secondary_btn form-control" for="customfile">ファイルを選択</label>
         <div class="work_room_post__custom-file">
           <%= f.attachment_field :work_room_images_images, id: "customfile", class: "custom-file-input", :multiple => true %>
         </div>
@@ -18,9 +18,11 @@
   <div class="work_room_post__item_post">
     <h4>アイテムを投稿する</h4>
     <p>この作業部屋に写っているアイテムを教えて下さい。</p>
-    <span type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-      検索して追加する
-    </span>
+    <div class="form-group">
+      <span type="button" class="my_secondary_btn form-control" data-toggle="modal" data-target="#exampleModalLong">
+        検索して追加する
+      </span>
+    </div>
     <div class="work_room_post__post_items"></div>
   </div>
   <!-- アイテムを投稿する -->
@@ -71,6 +73,6 @@
   <!-- 投稿者コメント/ -->
 
   <div class="form-group">
-    <%= f.button '投稿を完了する', class:"btn btn-primary form-control" %>
+    <%= f.button '投稿を完了する', class:"my_primary_btn form-control" %>
   </div>
 <% end %>
