@@ -11,6 +11,8 @@ $(document).on('turbolinks:load', function() {
 
   //ファイル選択のイベントハンドラ
   function fileSelectHandler(evt) {
+    $('#preview').remove();// 繰り返し実行時の処理
+    $(this).parents('.input-group').after('<div id="preview"></div>');
     var files = evt.target.files;
 
     filesShowPreview(files)
@@ -36,7 +38,7 @@ $(document).on('turbolinks:load', function() {
 
           //ファイルの取消イベントハンドラ設定
           $('.work_room_post__img-remove-btn').click(function(){
-            $('#preview').empty();
+            $('#preview').remove();
             $('.custom-file-input').val('');
           })
         };
