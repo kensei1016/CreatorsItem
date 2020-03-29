@@ -16,13 +16,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if resource.errors.empty?
       save_creator_genre(resource)
     end
-    # 他のジャンルであれば新規登録して、ユーザに関連付ける
-    if params[:creator_other_genre_check].present? && params[:creator_other_genre].present?
-      # TODO: name_enは英訳して入れたい
-      creator_genre = CreatorGenre.create!(name: params[:creator_other_genre], name_en: params[:creator_other_genre])
-      current_user.creator_genres << creator_genre
-    end
-
   end
 
   # GET /resource/edit
@@ -54,7 +47,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def save_creator_genre(resource)
     return unless resource.instance_of?(User)
-    creator_genre_ids = params[:user][:creator_genre_ids]
+    creator_genre_ids = params[:user][:creator_genres]
     if creator_genre_ids.present?
       # 現在の設定を一度クリアする
       resource.creator_genres.destroy_all
