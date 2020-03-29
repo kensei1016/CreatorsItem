@@ -45,6 +45,7 @@
           <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active" id="post_list_tab" data-toggle="tab" href="#post_list" role="tab" aria-controls="post_list" aria-selected="true">投稿一覧</a>
             <a class="nav-item nav-link" id="save_item_tab" data-toggle="tab" href="#save_item" role="tab" aria-controls="nav-profile" aria-selected="false">あとで見る</a>
+            <a class="nav-item nav-link" id="follow_user_tab" data-toggle="tab" href="#follow_user" role="tab" aria-controls="nav-profile" aria-selected="false">フォロー</a>
           </div>
         </nav>
 
@@ -71,6 +72,23 @@
             </div>
           </div>
           <!-- あとで見る/ -->
+          <!-- フォローユーザ -->
+          <div class="tab-pane" id="follow_user" role="tabpanel" aria-labelledby="follow_user_tab">
+            <div><%= @follow_users.count %>人をフォロー</div>
+            <div class="user_page__follow_user">
+              <% @follow_users.each do |follow_user| %>
+                <div class="user_profile mr-3 mt-2">
+                  <div class="user_icon">
+                    <%= link_to user_path(follow_user) do %>
+                      <%= attachment_image_tag follow_user, :profile_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png" %>
+                    <% end %>
+                  </div>
+                  <span class="user_profile__user_name"><%= follow_user.name %></span>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <!-- フォローユーザ/ -->
         </div>
         <!-- ユーザメニューリスト/ -->
       </div>
