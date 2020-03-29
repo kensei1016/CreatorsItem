@@ -1,24 +1,8 @@
-# README
+# CreatorsItem
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+CreatorsItemは、絵・音楽・料理・プログラミングなど
+様々なクリエイターが使っているアイテムを
+共有できるサイトです。
 
-Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[CreatorsItemウェブサイト](http://18.177.85.217/)
