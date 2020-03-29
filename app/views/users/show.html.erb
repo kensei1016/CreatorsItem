@@ -34,7 +34,9 @@
           </div>
           
           <div class="user_page__caption">
-            <%= simple_format(Rinku.auto_link(@user.caption, :all, 'target="_blank"'), {}, sanitize: false, wrapper_tag: "div") %>
+            <% if @user.present? && @user.caption.present? %>
+              <%= simple_format(Rinku.auto_link(@user.caption, :all, 'target="_blank"'), {}, sanitize: false, wrapper_tag: "div") %>
+            <% end %>
           </div>
         </div>
 
