@@ -46,6 +46,7 @@
             <a class="nav-item nav-link active" id="post_list_tab" data-toggle="tab" href="#post_list" role="tab" aria-controls="post_list" aria-selected="true">投稿一覧</a>
             <a class="nav-item nav-link" id="save_item_tab" data-toggle="tab" href="#save_item" role="tab" aria-controls="nav-profile" aria-selected="false">あとで見る</a>
             <a class="nav-item nav-link" id="follow_user_tab" data-toggle="tab" href="#follow_user" role="tab" aria-controls="nav-profile" aria-selected="false">フォロー</a>
+            <a class="nav-item nav-link" id="follower_user_tab" data-toggle="tab" href="#follower_user" role="tab" aria-controls="nav-profile" aria-selected="false">フォロワー</a>
           </div>
         </nav>
 
@@ -80,7 +81,7 @@
                 <div class="user_profile mr-3 mt-2">
                   <div class="user_icon">
                     <%= link_to user_path(follow_user) do %>
-                      <%= attachment_image_tag follow_user, :profile_image, :fill, 40, 40, fallback: "module/user_icons/user_no_image_icon.png" %>
+                      <%= attachment_image_tag follow_user, :profile_image, :fill, 60, 60, fallback: "module/user_icons/user_no_image_icon.png", class: "rounded-circle" %>
                     <% end %>
                   </div>
                   <span class="user_profile__user_name"><%= follow_user.name %></span>
@@ -89,6 +90,23 @@
             </div>
           </div>
           <!-- フォローユーザ/ -->
+          <!-- フォロワーユーザ -->
+          <div class="tab-pane" id="follower_user" role="tabpanel" aria-labelledby="follower_user_tab">
+            <div><%= @follower_users.count %>人のフォロワー</div>
+            <div class="user_page__follower_user">
+              <% @follower_users.each do |follower_users| %>
+                <div class="user_profile mr-3 mt-2">
+                  <div class="user_icon">
+                    <%= link_to user_path(follower_users) do %>
+                      <%= attachment_image_tag follower_users, :profile_image, :fill, 60, 60, fallback: "module/user_icons/user_no_image_icon.png", class: "rounded-circle"  %>
+                    <% end %>
+                  </div>
+                  <span class="user_profile__user_name"><%= follower_users.name %></span>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          <!-- フォロワーユーザ/ -->
         </div>
         <!-- ユーザメニューリスト/ -->
       </div>

@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     @work_rooms_page = @work_rooms.page(params[:page]).per(3)
     @save_items = @user.save_items.includes([:work_room]).order(created_at: :desc)
     @follow_users = @user.following_user
+    @follower_users = @user.follower_user
 
     respond_to do |format|
       format.html {render 'show'}
