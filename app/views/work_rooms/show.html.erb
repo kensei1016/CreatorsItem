@@ -66,7 +66,7 @@
               <div class="work_room_show__creator_item_thumbnail">
                 <%= link_to creator_item_path(creator_item) do %>
                   <div class="work_room_show__item_img_box">
-                    <img src="<%= creator_item.item_image || image_url("module/work_room--no_image.icon") %>">
+                    <img src="<%= creator_item.item_image || image_url("module/work_room--no_image.icon.png") %>">
                   </div>
                   <span class="work_room_show__external_site_name">
                     <%= creator_item.external_site_name || "－" %>
