@@ -70,11 +70,14 @@
   }
 
   &__item_img_box {
-    width: 128px;
-    height: 128px;
+    // height: 128px;
+    // width: 128px;
+    // object-fit: cover;
+
     text-align: center;
     margin: 30px auto 10px;
     & img {
+      width: 128px;
       height: 128px;
     }
   }
