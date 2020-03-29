@@ -43,9 +43,9 @@ server '18.177.85.217', user: 'ec2-user', roles: %w{app web db}
 # Global options
 # --------------
 #  set :ssh_options, {
-#    keys: %w(/home/user_name/.ssh/id_rsa),
-#    forward_agent: false,
-#    auth_methods: %w(password)
+#    keys: %w(/vagrant/portfolio-aws.pem /vagrant/ ~/.ssh/id_rsa),
+#    forward_agent: true,
+#    auth_methods: %w(publickey)
 #  }
 #
 # The server-based syntax can be used to override options:

@@ -38,10 +38,13 @@ set :repo_url, "git@github.com:kensei1016/CreatorsItem.git"
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 
+# set :use_sudo, true
+
 set :deploy_to, "/home/ec2-user/CreatorsItem"
 set :rbenv_ruby, '2.5.7'
 set :linked_files, %w{config/master.key .env}
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
+
 namespace :deploy do
   desc 'Database'
   task :db_migrate do
