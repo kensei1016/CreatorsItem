@@ -1,5 +1,5 @@
 class WorkRoomsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, :destroy]
   before_action :baria_user, only: [:edit, :update, :destroy]
 
   def new
