@@ -1,5 +1,6 @@
 class WorkRoomsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :baria_user, only: [:edit, :update, :destroy]
 
   def new
     @work_room = WorkRoom.new
@@ -90,6 +91,13 @@ class WorkRoomsController < ApplicationController
         .permit(:creator_genre_id, :caption, :tag_list, :search_site_name,
                 creator_items_attributes: [:search_word, :item_url, :external_site_name, :item_code],
                 work_room_images_images: [])
+  end
+
+  def baria_user
+    work_room = WorkRoom.find(params[:id])
+		unless work_room.user.id.to_i == current_user.id
+  		redirect_to work_rooms_path
+  	end
   end
 
 end
