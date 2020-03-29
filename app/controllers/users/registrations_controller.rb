@@ -47,7 +47,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def save_creator_genre(resource)
     return unless resource.instance_of?(User)
-    creator_genre_ids = params[:user][:creator_genres]
+    creator_genre_ids = nil
+    if params[:user][:creator_genres].present?
+      creator_genre_ids = params[:user][:creator_genres]
+    elsif params[:user][:creator_genre_ids].present?
+      creator_genre_ids = params[:user][:creator_genre_ids]
+    end
     if creator_genre_ids.present?
       # 現在の設定を一度クリアする
       resource.creator_genres.destroy_all
