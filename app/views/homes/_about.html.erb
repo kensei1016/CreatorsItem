@@ -1,12 +1,15 @@
 <div class="about_page container mt-5">
 
+  <!-- ヘッダー -->
   <h2 class="about_page__main_message">クリエイターが使っているアイテムを知りたくはありませんか？</h2>
   <p class="about_page__sub_message">
     何か新しいことを始めたいとき、<br>
     避けては通れないのが「アイテム選び」<br>
     Creators Itemはそんな瞬間に皆様の力になりたいと思っています<br>
   </p>
+  <!-- ヘッダー/ -->
 
+  <!-- ジャンルごとの紹介 -->
   <div class="about_page__contents_box row justify-content-center">
     <div class="about_page__content col-4">
       <% genre_music = creator_genres.find_by(name_en: "music") %>
@@ -42,7 +45,42 @@
         たくさんあります。
       </p>
     </div>
-
   </div>
+  <!-- ジャンルごとの紹介/ -->
+
+  <!-- サイトの使い方 -->
+  <div class="about_page__site_description_box row">
+    <div class="about_page__site_description_left_contents col-6">
+      <h4 class="about_page__site_description_top_msg">
+        あなたのこだわりが詰まった<br>
+        作業部屋の写真を投稿してみましょう。
+      </h4>
+      <p class="about_page__site_description_msg">
+        色々悩んで集めたアイテムたち。<br>
+        それらが集まったあなたの部屋も1つの作品です。
+      </p>
+    </div>
+    <div class="about_page__site_description_right_contents col-6">
+      <%= image_tag "about/work_room.png", class: "about_page__site_description_img" %>
+    </div>
+  </div>
+
+  <div class="about_page__site_description_box row">
+    <div class="about_page__site_description_left_contents col-6">
+      <h4 class="about_page__site_description_top_msg">
+        他の人の投稿を見てアイテム選びの<br>
+        参考にしてみましょう。
+      </h4>
+      <p class="about_page__site_description_msg">
+        自分が好きなことはもちろん、<br>
+        今まで知らなかった世界にも新しい気づきが<br>
+        隠れているかもしれません。
+      </p>
+    </div>
+    <div class="about_page__site_description_right_contents col-6">
+      <%= image_tag "about/acostic_guitars_451356.png", class: "about_page__site_description_img" %>
+    </div>
+  </div>
+  <!-- サイトの使い方/ -->
 
 </div>
