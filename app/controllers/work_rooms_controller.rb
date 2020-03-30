@@ -48,13 +48,13 @@ class WorkRoomsController < ApplicationController
     # ジャンルによる絞り込みがある場合
     if params[:genre_id].present?
         @creator_genre = CreatorGenre.find(params[:genre_id])
-        @work_rooms = @work_rooms.where(creator_genre_id: @creator_genre.id)
+        @work_rooms = @work_rooms.where(creator_genre_id: @creator_genre.id).order(created_at: :desc)
     end
 
     # タグによる絞り込みがある場合
     if params[:tag_name].present?
       @tag_name = params[:tag_name]
-      @work_rooms = @work_rooms.tagged_with(@tag_name)
+      @work_rooms = @work_rooms.tagged_with(@tag_name).order(created_at: :desc)
     end
     
     @work_rooms = @work_rooms.includes([:creator_genre, :user]).page(params[:page])
